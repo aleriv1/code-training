@@ -1,0 +1,4 @@
+console.log('Brendan Eich')
+console.log('10')
+console.log('1995')
+console.log('js !== java')
