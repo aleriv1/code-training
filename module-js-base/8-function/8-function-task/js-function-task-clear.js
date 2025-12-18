@@ -13,8 +13,6 @@ console.log(getName2());
 const getName3 = (name = "Aleksandr3") => `Имя равно ${name}`;
 console.log(getName3());
 
-// https://codepen.io/aleriv1/pen/azNeZBR
-
 // #endregion js-function-task1
 
 // #region js-function-task2
@@ -42,70 +40,9 @@ const getSumOfNumbers = (number, type = "odd") => {
 
 console.log(getSumOfNumbers(2, ""));
 
-// https://codepen.io/aleriv1/pen/WbwVxYX
-
-const getSumOfNumbersGrokImproved = (number, type = "odd") => {
-  if (
-    number === undefined ||
-    Number.isNaN(number) ||
-    typeof number !== "number" ||
-    !Number.isFinite(number) || // Ловит Infinity/-Infinity
-    number < 0 // Предполагаю invalid
-  ) {
-    return NaN;
-  }
-  const n = Math.floor(number); // Для дробных — floor
-  if (type !== "odd" && type !== "even" && type !== "") {
-    return NaN; // Или fallback: type = "odd";
-  }
-  let sum = 0;
-  for (let i = 0; i <= n; i++) {
-    let add = false;
-    if (type === "odd" && i % 2 !== 0) add = true;
-    else if (type === "even" && i % 2 === 0) add = true;
-    else if (type === "") add = true;
-    if (add) sum += i;
-  }
-  return sum;
-};
-
 // #endregion js-function-task2
 
 // #region js-function-task3
-
-function getDivisorsCount2(number) {
-  console.log(`getDivisorsCount started`);
-  if (
-    number === undefined ||
-    Number.isNaN(number) ||
-    typeof number !== "number" ||
-    !Number.isFinite(number) || // Ловит Infinity/-Infinity
-    number < 0 // Предполагаю invalid
-  ) {
-    return NaN;
-  } else if (number < 0 || !Number.isInteger(number)) {
-    console.log("number must be an integer and greater than zero");
-    return;
-  }
-  let divisors = "делители - ";
-
-  if (number === 1) {
-    return (divisors += 1);
-  } else if (number === 2) {
-    return (divisors += "1, 2");
-  }
-
-  divisors += "1, ";
-
-  for (let i = 2; i < number; i++) {
-    if (i !== number) {
-      number % i === 0 ? (divisors += `${i}, `) : null;
-    }
-  }
-  divisors += number;
-
-  return divisors;
-}
 
 function getDivisorsCount(number) {
   if (
@@ -134,8 +71,7 @@ function getDivisorsCount(number) {
   }
   return `количество делителей для числа ${number}: ${divisorsCount} (${divisors})`;
 }
-// https://codepen.io/aleriv1/pen/qEZeqzM
 
-console.log(getDivisorsCount(12));
+console.log(getDivisorsCount(120));
 
 // #endregion js-function-task3
