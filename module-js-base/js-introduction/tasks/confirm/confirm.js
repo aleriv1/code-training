@@ -1,16 +1,15 @@
-// let confirmQTest = confirm()
-// console.log(confirmQTest)
+// #region JsIntroTask3Configm
 
-function confirmTask() {
+function JsIntroTaskTask3Confirm() {
   confirm('js appeared in 1995?') ? console.log('right') : console.log('wrong')
   confirm('is the js specification called ECMAscript') ? console.log('right') : console.log('wrong')
   confirm('Was js created in one month') ? console.log('right') : console.log('wrong')
 }
 
-// confirmTask()
+JsIntroTaskTask3confirmTask()
 
 
-function confirmTaskMentor() {
+function JsIntroTaskTask3ConfirmAnother() {
   /* eslint-disable */
 
   if (confirm("JavaScript появился в 1995 году?") === true) {
@@ -32,7 +31,4 @@ function confirmTaskMentor() {
   }
 }
 
-
-// if (confirm()) {
-//   console.log('confirm')
-// }
+// #endregion JsIntroTask3Configm
