@@ -114,10 +114,9 @@ function updatePrices(prices, coffeeList) {
 }
 
 updatePrices(prices, coffees);
+// https://codepen.io/aleriv1/pen/azZoNoN
 
 // console.log(updatePrices(prices));
-
-// https://codepen.io/aleriv1/pen/azZoNoN
 
 // #endregion 9-array tasks task 4 the prices become highter
 
@@ -173,3 +172,91 @@ getClientEstimation();
 // https://codepen.io/aleriv1/pen/xbOKVqq
 
 // #endregion 9-array tasks task 5 coffee shop estimations
+
+// #region 9-array tasks task 6 the sum of the cubes
+
+// function raiseToThirdForCycle(numbers) {
+function raiseToThirdForCycle() {
+  const numbers = [10, 4, 100, -5, 54, 2];
+  let sumOfCubes = 0;
+  for (let i = 0; i < numbers.length; i++) {
+    numbers[i] = numbers[i] ** 3;
+    sumOfCubes += numbers[i];
+  }
+  return sumOfCubes;
+}
+
+console.log("raiseToThirdForCycle()", raiseToThirdForCycle());
+
+console.log("--");
+// --
+
+function raiseToThirdForOfCycle() {
+  const numbers = [10, 4, 100, -5, 54, 2];
+  let sumOfCubes = 0;
+  for (let num of numbers) {
+    num = num ** 3;
+    sumOfCubes += num;
+  }
+  return sumOfCubes;
+}
+
+console.log("raiseToThirdForOfCycle()", raiseToThirdForOfCycle());
+
+console.log("--");
+// --
+
+function raiseToThirdForCycleforEachMethod() {
+  const numbers = [10, 4, 100, -5, 54, 2];
+  let sumOfCubes = 0;
+  numbers.forEach((num) => {
+    num **= 3;
+    sumOfCubes += num;
+  });
+  return sumOfCubes;
+}
+
+console.log(
+  "raiseToThirdForCycleforEach()",
+  raiseToThirdForCycleforEachMethod()
+);
+
+console.log("--");
+// --
+
+function raiseToThirdForCycleforReduceMethod() {
+  const numbers = [10, 4, 100, -5, 54, 2];
+  let sumOfCubes = numbers.reduce((acc, num) => {
+    num **= 3;
+    return acc + num;
+  }, 0);
+  return sumOfCubes;
+}
+
+console.log(
+  "raiseToThirdForCycleforReduce()",
+  raiseToThirdForCycleforReduceMethod()
+);
+
+// https://codepen.io/aleriv1/pen/wBWwJpp
+
+// function raiseToThirdForCycleforReduce() {
+//   const numbers = [10, 4, 100, -5, 54, 2];
+//   let sumOfCubes = numbers.reduce((acc, num) => {
+//     console.log("new iteration");
+//     console.log("acc", acc);
+//     console.log("num", num);
+//     num **= 3;
+//     console.log("num", num);
+//     console.log(
+//       "acc+num",
+//       `${acc}+${num}`,
+//       acc + num,
+//       "\nto the next iteration"
+//     );
+//     return acc + num;
+//   }, 0);
+//   return sumOfCubes;
+// }
+
+// #endregion 9-array tasks task 6 the sum of the cubes
