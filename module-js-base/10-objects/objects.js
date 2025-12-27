@@ -135,12 +135,52 @@ for (const key in goodInfo) {
 // #region Object.keys // creates an array of the object keys
 
 const keys = Object.keys(goodInfo);
-console.log(keys);
+console.log("keys", keys);
 
 // #endregion Object.keys
 
 // #region Object.values // creates an array of the object values
 
+const values = Object.values(goodInfo);
+console.log("values", values);
+
 // #endregion Object.values
 
+// #region Object.entries
+
+const entries = Object.entries(goodInfo); // creates an array of arrays with key and value
+console.log("entries", entries);
+
+console.log("entries[0]", entries[0]);
+
+// #endregion Object.entries
+
 // #endregion oject iteration, oject creation from array
+
+// #region material fix
+
+const Alena = {
+  name: "Alena",
+  beautyLevel: "Top",
+};
+
+for (const key in Alena) {
+  console.log(`${key}: ${Alena[key]}`);
+}
+
+const keysAlena = Object.keys(Alena);
+console.log("keysAlena", keysAlena);
+
+const valuesAlena = Object.values(Alena);
+console.log("valuesAlena", valuesAlena);
+
+const entriesAlena = Object.entries(Alena);
+console.log("entriesAlena", entriesAlena);
+
+Object.entries(Alena).forEach((arr) => console.log(`${arr[0]} ${arr[1]}`));
+
+Object.entries(Alena).forEach(([key, value]) =>
+  console.log(`${key}: ${value}`)
+);
+
+// #endregion material fix
