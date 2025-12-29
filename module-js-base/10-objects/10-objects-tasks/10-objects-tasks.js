@@ -212,13 +212,13 @@ console.log(handleObject(obj, "name", "delete"));
 // #region 10-objects-tasks task 4 giveJobToStudent()
 
 /* 
-Вам необходимо создать функцию giveJobToStudent(), которая будет добавлять новое свойство в объект и выводить информацию в модальном окне. Она принимает в себя 2 параметра:
+todo Вам необходимо создать функцию giveJobToStudent(), которая будет добавлять новое свойство в объект и выводить информацию в модальном окне. Она принимает в себя 2 параметра:
 
-student — объект, содержащий информацию о студенте.
-jobName — название новой работы студента.
-Функция giveJobToStudent() выводит в модальное окно сообщение «Поздравляем! У студента fullName появилась новая работа! Теперь он jobName», где fullName — это имя студента, а jobName — название новой работы студента.
+* student — объект, содержащий информацию о студенте.
+* jobName — название новой работы студента.
+* Функция giveJobToStudent() выводит в модальное окно сообщение «Поздравляем! У студента fullName появилась новая работа! Теперь он jobName», где fullName — это имя студента, а jobName — название новой работы студента.
 
-Функция giveJobToStudent() должна возвращать новый объект студента, в котором будут все ключи из объекта student и также появится новый ключ job со значением параметра jobName.
+^ Функция giveJobToStudent() должна возвращать новый объект студента, в котором будут все ключи из объекта student и также появится новый ключ job со значением параметра jobName.
 
 Для теста функции giveJobToStudent() используйте следующий код:
 
@@ -245,16 +245,19 @@ const student = {
 };
 
 function giveJobToStudent(student, jobName) {
-  student.job = jobName;
-  // alert(
   console.log(
-    `Поздравляем! У студента ${student.fullName} появилась новая работа! Теперь он ${student.job}`
+    `Поздравляем! У студента ${student.fullName} появилась новая работа! Теперь он ${jobName}`
   );
 
-  return student;
+  return {
+    ...student,
+    job: jobName,
+  };
 }
 
 const updatedStudent = giveJobToStudent(student, "Front-end developer");
+
+console.log("student", student);
 
 console.log(updatedStudent);
 

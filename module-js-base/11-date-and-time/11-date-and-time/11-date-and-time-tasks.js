@@ -77,11 +77,12 @@ const dateForAdding = new Date(2025, 11, 30);
 
 function addDays(date = dateForAdding, days = 1) {
   const dateAfterAddingDays = new Date(date.getTime() + daysToMs(days));
-  // const dateAfterAddingDays = new Date(Date.now() + daysToMs(days));
-  // return dateAfterAddingDays.getDate();
   return dateAfterAddingDays;
 }
 
-console.log(addDays());
+console.log(addDays().toString());
+console.log(addDays().toISOString());
+
+// https://codepen.io/aleriv1/pen/EayaGGr
 
 // #endregion 11-date-and-time taks, task 3, adding days
