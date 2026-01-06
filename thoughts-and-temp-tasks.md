@@ -1,3 +1,7 @@
+## 20260104-222143
+
+what is node list
+
 ## 20260103-120753
 
 contructor in class -- the constructor is everywhere :);

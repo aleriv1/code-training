@@ -18,7 +18,6 @@ class Car {
     this.name = name || Car.#initialParams.name;
     this.maxSpeed = maxSpeed || Car.#initialParams.maxSpeed;
   }
-
   drive() {
     console.log(`The car ${this.name} is on its way now`);
   }
