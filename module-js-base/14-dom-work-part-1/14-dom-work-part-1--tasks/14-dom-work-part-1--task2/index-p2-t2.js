@@ -82,6 +82,8 @@ function renderTasks(tasks) {
 
 renderTasks(tasks);
 
+// #region 14-dom-work task1s
+
 function addTask(tasks) {
   // В задании добавлять задачи в массив task; но ведь одно из фундаментальный правил react -- исходой значение должно быть неизменным, творим (вместе с библиотекой) над копией
   const updatedTasks = [...tasks];
@@ -94,11 +96,45 @@ function addTask(tasks) {
     return { id, completed, text };
   }
 
+  // #region 14-dom-work task2
+
+  const emptyTask = "Название задачи не должно быть пустым";
+  const sameNameTask = "Задача с таким названием уже существует";
+
+  function createErrorMessage(message) {
+    const errorMessageBlock = document.createElement("span");
+    errorMessageBlock.classList.add("error-message-block");
+    errorMessageBlock.innerText = message;
+    return errorMessageBlock;
+  }
+
+  // #endregion 14-dom-work task2
+
   const createTaskBlock = document.querySelector(".create-task-block");
 
   createTaskBlock.addEventListener("submit", (event) => {
     event.preventDefault();
     const text = event.target.elements.taskName.value;
+
+    // #region 14-dom-work task2
+
+    if (document.querySelector(".error-message-block")) {
+      document.querySelector(".error-message-block").remove();
+    }
+
+    if (!text) {
+      createTaskBlock.append(createErrorMessage(emptyTask));
+      return;
+    } else if (
+      updatedTasks.some(({ text: existingTask }) => {
+        return text === existingTask;
+      })
+    ) {
+      createTaskBlock.append(createErrorMessage(sameNameTask));
+      return;
+    }
+
+    // #endregion 14-dom-work task2
 
     updatedTasks.push(addTaskToArray(text));
     renderTasks(updatedTasks);
@@ -107,4 +143,6 @@ function addTask(tasks) {
 
 addTask(tasks);
 
-// https://codesandbox.io/p/sandbox/jzv5sz
+// #endregion 14-dom-work task1s
+
+// https://codesandbox.io/p/sandbox/d25z5v
