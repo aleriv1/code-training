@@ -4,8 +4,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DOM work, part 1</title>
+  <title>DOM work</title>
   <script src="14-dom-work-part-2.js" defer></script>
+  <script src="cupturing-bubbling-delegation.js" defer></script>
   <style>
     .square {
       width: 30px;
@@ -16,6 +17,11 @@
     .body {
       display: flex;
       justify-content: space-between;
+    }
+
+    * {
+      border: 1px solid rgb(12, 134, 113);
+      padding: 5px;
     }
   </style>
 </head>
@@ -31,6 +37,20 @@
     <p class="text" data-id="1">Paragraph 1</p>
     <p class="text" data-id="2">Paragraph 2</p>
   </div>
+
+  <form action="">FORM
+    <div class="">DIV
+      <p>P</p>
+    </div>
+  </form>
+
+  <div class="wrapper">
+    <p>1 paragraph</p>
+    <p>2 paragraph</p>
+    <p>3 paragraph</p>
+  </div>
+
+
 
 </body>
 

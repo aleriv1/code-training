@@ -61,7 +61,7 @@ createTaskForm.addEventListener("submit", (event) => {
 
 document.addEventListener("keydown", (event) => {
   const { key } = event;
-  console.log("keydown", key);
+  // console.log("keydown", key);
 
   /*   let taskItems = [...document.querySelectorAll(".task-item")];
   // console.log("taskItems before task deleting", taskItems);
@@ -91,7 +91,7 @@ document.addEventListener("keydown", (event) => {
 
 document.addEventListener("keyup", (event) => {
   const { key } = event;
-  console.log("keyup", key);
+  // console.log("keyup", key);
   const taskItemToDelete = document.querySelector(`[data-task-id="${key}"]`);
   if (taskItemToDelete) {
     // const deleteConfirmed = confirm("Are you sure");
@@ -160,3 +160,57 @@ document.addEventListener("mousemove", (e) => {
 });
 
 // #endregion mousemove -- when the mouse is moved
+
+// #region contextmenu -- the right mouse key menu
+
+document.addEventListener("contextmenu", (e) => {
+  console.log(e);
+  e.preventDefault();
+});
+
+// #endregion contextmenu -- the right mouse key menu
+
+// #region change, input -- input events
+
+// Some form validation
+
+const checkTaskNameInputOnValidation = (value) => {
+  if (!value || value.includes("@")) {
+    return false;
+  } else {
+    return true;
+  }
+};
+
+const createTaskBlock = document.querySelector(".create-task-block");
+const taskNameInput = createTaskBlock.querySelector(
+  ".create-task-block__input"
+); // this if for optimization
+
+// taskNameInput.addEventListener("change", (e) => {
+taskNameInput.addEventListener("input", (e) => {
+  // when the input is changed and the focus was moved from it
+  // console.log(e);
+  const { target } = e;
+  console.log(target);
+  const { value } = target;
+  console.log(value);
+
+  const isValid = checkTaskNameInputOnValidation(value);
+  const messageBlockFromDOM = document.querySelector(".error-message-block");
+
+  if (!isValid) {
+    const newMessageBlock = document.createElement("span");
+    newMessageBlock.classList.add("error-message-block");
+    newMessageBlock.textContent = `Error! The task shouldn't be empty of contain @ symbol`; // now we need to place this error inside the form, after the jbutton
+    createTaskBlock.append(newMessageBlock);
+  } else if (isValid && messageBlockFromDOM) {
+    messageBlockFromDOM.remove();
+  }
+});
+
+// #endregion change, input -- input events
+
+// #region input -- adds more dynamic -- it works when when we insert some symbol in our input
+
+// #endregion input -- adds more dynamic -- it works when when we insert some symbol in our input

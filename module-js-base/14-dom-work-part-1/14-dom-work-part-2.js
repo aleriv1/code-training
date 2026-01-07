@@ -15,8 +15,8 @@ paragraphs.forEach((p) => {
   p.addEventListener("click", allText);
 });
 
-function allText(even) {
-  even.target.innerText += " allText";
+function allText(event) {
+  // event.target.innerText += " allText";
 }
 
 // #endregion click
@@ -78,3 +78,31 @@ paras.forEach((p) => {
 });
 
 // #endregion mouseover
+
+// #region contextmenu
+
+document.addEventListener("contextmenu", (e) => {
+  e.preventDefault();
+  console.log(e.target);
+});
+
+// #endregion contextmenu
+
+// #region change
+
+const input = document.querySelector('input[type="text"]');
+
+input.addEventListener("change", (e) => {
+  console.log(e.target.value);
+  if (!e.target.value) {
+    console.log("Enter the text");
+  }
+});
+
+// #endregion change
+
+const button = document.querySelector('input[type="submit"]');
+button.disabled = true;
+input.addEventListener("input", (e) => {
+  button.disabled = !e.target.value;
+});
