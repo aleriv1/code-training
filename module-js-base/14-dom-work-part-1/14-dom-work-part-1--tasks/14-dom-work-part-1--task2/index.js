@@ -67,6 +67,7 @@ const tasks = [
 
 function renderTasks(tasks) {
   const tasksList = document.querySelector(".tasks-list");
+  tasksList.innerHTML = "";
 
   // #region innerHTML реализация -- готовимся к vue :)
 
@@ -139,14 +140,13 @@ function renderTasks(tasks) {
       "default-button",
       "delete-button"
     );
+
     taskItemDeleteButton.innerText = "Удалить";
     taskItemMainContainer.append(taskItemMainContent, taskItemDeleteButton);
     taskItem.append(taskItemMainContainer);
 
     return taskItem;
   }
-
-  console.log(createTaskEl("1", true, "la-la"));
 
   tasks.forEach(({ id, completed, text }) => {
     const task = createTaskEl(id, completed, text);
@@ -158,6 +158,39 @@ function renderTasks(tasks) {
 }
 
 renderTasks(tasks);
+
+function addTask(tasks) {
+  const updatedTasks = [...tasks];
+
+  function addTaskToArray(
+    text = "new task",
+    id = String(Date.now()),
+    completed = false
+  ) {
+    return { id, completed, text };
+  }
+
+  const createTaskBlock = document.querySelector(".create-task-block");
+
+  createTaskBlock.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const text = event.target.elements.taskName.value;
+    // tasks.push(changeTasksArray(text));
+    // console.log("tasks", tasks);
+    // renderTasks(tasks);
+
+    updatedTasks.push(addTaskToArray(text));
+    renderTasks(updatedTasks);
+  });
+}
+
+addTask(tasks);
+
+// function deleteTask(event) {
+//   const { target } = event;
+//   const task = target.closest(".task-item");
+//   task.remove();
+// }
 
 // https://codepen.io/aleriv1/pen/LEZNjQO
 
