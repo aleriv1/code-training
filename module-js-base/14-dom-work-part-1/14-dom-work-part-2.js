@@ -40,3 +40,41 @@ form.addEventListener("submit", (event) => {
 });
 
 // #endregion submit
+
+// #region keydown, keyup
+
+document.addEventListener("keydown", (e) => {
+  const key = e.key;
+  const p = document.querySelector(`[data-id='${key}']`);
+  if (p) {
+    p.style.fontWeight = "bold";
+  }
+});
+
+document.addEventListener("keyup", (e) => {
+  const key = e.key;
+  const p = document.querySelector(`[data-id='${key}']`);
+  if (p) {
+    p.style.fontWeight = "normal";
+  }
+});
+
+// #endregion keydown, keyup
+
+// #region mouseover
+
+const paras = document.querySelectorAll("p");
+
+paras.forEach((p) => {
+  p.addEventListener("mouseover", (e) => {
+    e.target.style.fontWeight = "bold";
+  });
+});
+
+paras.forEach((p) => {
+  p.addEventListener("mouseout", (e) => {
+    e.target.style.fontWeight = "normal";
+  });
+});
+
+// #endregion mouseover
