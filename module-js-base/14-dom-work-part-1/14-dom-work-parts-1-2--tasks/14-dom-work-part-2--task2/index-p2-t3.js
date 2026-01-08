@@ -6,7 +6,8 @@
 Подсказка: для получения уникального id можно воспользоваться Date.now().
  */
 
-const tasks = [
+// const tasks = [
+let tasks = [
   {
     id: "1138465078061",
     completed: true,
@@ -24,8 +25,11 @@ const tasks = [
   },
 ];
 
+// const updatedTasks = [...tasks];
+
+const tasksList = document.querySelector(".tasks-list");
+
 function renderTasks(tasks) {
-  const tasksList = document.querySelector(".tasks-list");
   tasksList.innerHTML = "";
 
   function createTaskEl(id, completed, text) {
@@ -84,9 +88,9 @@ renderTasks(tasks);
 
 // #region 14-dom-work task1s
 
-function addTask(tasks) {
+function addTask() {
   // В задании добавлять задачи в массив task; но ведь одно из фундаментальный правил react -- исходой значение должно быть неизменным, творим (вместе с библиотекой) над копией
-  const updatedTasks = [...tasks];
+  // tasks = [...tasks];
 
   function addTaskToArray(
     text = "new task",
@@ -126,7 +130,7 @@ function addTask(tasks) {
       createTaskBlock.append(createErrorMessage(emptyTask));
       return;
     } else if (
-      updatedTasks.some(({ text: existingTask }) => {
+      tasks.some(({ text: existingTask }) => {
         return text === existingTask;
       })
     ) {
@@ -136,13 +140,83 @@ function addTask(tasks) {
 
     // #endregion 14-dom-work task2
 
-    updatedTasks.push(addTaskToArray(text));
-    renderTasks(updatedTasks);
+    // tasks.push(addTaskToArray(text));
+    tasks = [...tasks, addTaskToArray(text)];
+    renderTasks(tasks);
   });
 }
 
-addTask(tasks);
+addTask();
+
+const createDeleteModal = () => {
+  const modalOverlay = document.createElement("div");
+  modalOverlay.classList.add("modal-overlay", "modal-overlay_hidden");
+  modalOverlay.classList.add("modal-overlay");
+
+  const deleteModal = document.createElement("div");
+  deleteModal.classList.add("delete-modal");
+
+  const deleteModalQuestion = document.createElement("h3");
+  deleteModalQuestion.classList.add("delete-modal__question");
+  deleteModalQuestion.textContent =
+    "Вы действительно хотите удалить эту задачу?";
+
+  deleteModal.append(deleteModalQuestion);
+
+  const deleteModalButtons = document.createElement("div");
+  deleteModalButtons.classList.add("delete-modal__buttons");
+
+  const deleteModalButtonCancel = document.createElement("button");
+  deleteModalButtonCancel.classList.add(
+    "delete-modal__button",
+    "delete-modal__cancel-button"
+  );
+  deleteModalButtonCancel.textContent = "Отмена";
+  deleteModalButtonCancel.addEventListener("click", () => {
+    modalOverlay.classList.add("modal-overlay_hidden");
+  });
+  deleteModalButtons.append(deleteModalButtonCancel);
+
+  const deleteModalButtonConfirm = document.createElement("button");
+  deleteModalButtonConfirm.classList.add(
+    "delete-modal__button",
+    "delete-modal__confirm-button"
+  );
+  deleteModalButtonConfirm.textContent = "Удалить";
+  deleteModalButtons.append(deleteModalButtonConfirm);
+
+  deleteModal.append(deleteModalButtons);
+
+  modalOverlay.insertAdjacentElement("beforeend", deleteModal);
+
+  return modalOverlay;
+};
+
+document.querySelector("body").append(createDeleteModal());
+
+tasksList.addEventListener("click", (e) => {
+  const isDeleteButton = e.target.closest(".task-item__delete-button");
+  if (isDeleteButton) {
+    const modalOverlay = document.querySelector(".modal-overlay");
+    modalOverlay.classList.remove("modal-overlay_hidden");
+    const taskItem = e.target.closest(".task-item");
+    console.log(taskItem.dataset.id);
+    const deleteModalConfirmButton = document.querySelector(
+      ".delete-modal__confirm-button"
+    );
+    deleteModalConfirmButton.addEventListener("click", () => {
+      const filteredTasks = tasks.filter(({ id }) => {
+        return id !== taskItem.dataset.id;
+      });
+      tasks = [...filteredTasks];
+      console.log(tasks);
+      renderTasks(tasks);
+    });
+  }
+});
+
+// console.log(createDeleteModal());
 
 // #endregion 14-dom-work task1s
 
-// https://codesandbox.io/p/sandbox/d25z5v
+// https://codesandbox.io/p/sandbox/xzf2w5

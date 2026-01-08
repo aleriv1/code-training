@@ -76,13 +76,13 @@ document.addEventListener("keydown", (event) => {
   // taskItems = [...document.querySelectorAll(".task-item")];
   // console.log("taskItems after task deleting", taskItems); */
 
-  /*   const taskItemToDelete = document.querySelector(`[data-task-id="${key}"]`);
+  const taskItemToDelete = document.querySelector(`[data-task-id="${key}"]`);
   if (taskItemToDelete) {
     const deleteConfirmed = confirm("Are you sure");
     if (deleteConfirmed) {
       taskItemToDelete.remove();
     }
-  } */
+  }
 });
 
 // #endregion keydown
