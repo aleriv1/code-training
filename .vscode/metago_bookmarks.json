@@ -1,22 +1,7 @@
 {
-    "documents": {
-        "$ROOTPATH$\\module-js-base\\14-dom-work-part-1\\14-dom-work-parts-1-2--tasks\\14-dom-work-part-2--task2\\index-p2-t3.js": {
-            "key": "$ROOTPATH$\\module-js-base\\14-dom-work-part-1\\14-dom-work-parts-1-2--tasks\\14-dom-work-part-2--task2\\index-p2-t3.js",
-            "bookmarks": {
-                "148": {
-                    "line": 152,
-                    "char": 2
-                }
-            }
-        }
-    },
+    "documents": {},
     "history": {
-        "history": [
-            {
-                "documentKey": "$ROOTPATH$\\module-js-base\\14-dom-work-part-1\\14-dom-work-parts-1-2--tasks\\14-dom-work-part-2--task2\\index-p2-t3.js",
-                "bookmarkKey": "148"
-            }
-        ],
-        "index": 0
+        "history": [],
+        "index": -1
     }
 }
