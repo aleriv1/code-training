@@ -184,8 +184,6 @@ const createDeleteModal = () => {
   );
   deleteModalButtonConfirm.textContent = "Удалить";
   deleteModalButtonConfirm.addEventListener("click", () => {
-    console.log("confirm click");
-    console.log("currentTaskId", currentTaskId);
     if (!currentTaskId) return;
     tasks = [
       ...tasks.filter(({ id }) => {
@@ -214,9 +212,7 @@ tasksList.addEventListener("click", (e) => {
   if (isDeleteButton) {
     modalOverlay.classList.remove("modal-overlay_hidden");
     const taskItem = e.target.closest(".task-item");
-    console.log("taskItem in delete listener", taskItem);
     currentTaskId = taskItem.dataset.id;
-    console.log("currentTaskId in in delete listener", currentTaskId);
   }
 });
 

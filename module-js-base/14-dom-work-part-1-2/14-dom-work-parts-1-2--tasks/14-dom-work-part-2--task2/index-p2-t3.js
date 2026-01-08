@@ -71,7 +71,6 @@ function renderTasks() {
 
     return taskItem;
   }
-  console.log("tasks in renderTasks()", tasks);
 
   tasks.forEach(({ id, completed, text }) => {
     const task = createTaskEl(id, completed, text);
@@ -173,7 +172,6 @@ const createDeleteModal = () => {
 
   deleteModalButtonCancel.addEventListener("click", () => {
     modalOverlay.classList.add("modal-overlay_hidden");
-    console.log("tasks in cancel button", tasks);
   });
 
   deleteModalButtons.append(deleteModalButtonCancel);
@@ -186,8 +184,6 @@ const createDeleteModal = () => {
   deleteModalButtonConfirm.textContent = "Удалить";
 
   deleteModalButtonConfirm.addEventListener("click", () => {
-    console.log("confirm click");
-    console.log("currentTaskId", currentTaskId);
     if (!currentTaskId) return;
     tasks = [
       ...tasks.filter(({ id }) => {
@@ -216,9 +212,7 @@ tasksList.addEventListener("click", (e) => {
   if (isDeleteButton) {
     modalOverlay.classList.remove("modal-overlay_hidden");
     const taskItem = e.target.closest(".task-item");
-    console.log("taskItem in delete listener", taskItem);
     currentTaskId = taskItem.dataset.id;
-    console.log("currentTaskId in in delete listener", currentTaskId);
   }
 });
 
