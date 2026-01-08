@@ -19,6 +19,8 @@ let tasks = [
   },
 ];
 
+let currentTaskId = null;
+
 const tasksList = document.querySelector(".tasks-list");
 
 function renderTasks() {
@@ -170,6 +172,7 @@ const createDeleteModal = () => {
 
   deleteModalButtonCancel.addEventListener("click", () => {
     modalOverlay.classList.add("modal-overlay_hidden");
+    currentTaskId = null;
   });
 
   deleteModalButtons.append(deleteModalButtonCancel);
@@ -180,6 +183,20 @@ const createDeleteModal = () => {
     "delete-modal__confirm-button"
   );
   deleteModalButtonConfirm.textContent = "Удалить";
+  deleteModalButtonConfirm.addEventListener("click", () => {
+    console.log("confirm click");
+    console.log("currentTaskId", currentTaskId);
+    if (!currentTaskId) return;
+    tasks = [
+      ...tasks.filter(({ id }) => {
+        return id !== currentTaskId;
+      }),
+    ];
+    modalOverlay.classList.add("modal-overlay_hidden");
+    currentTaskId = null;
+    renderTasks();
+  });
+
   deleteModalButtons.append(deleteModalButtonConfirm);
 
   deleteModal.append(deleteModalButtons);
@@ -197,24 +214,65 @@ tasksList.addEventListener("click", (e) => {
   if (isDeleteButton) {
     modalOverlay.classList.remove("modal-overlay_hidden");
     const taskItem = e.target.closest(".task-item");
-    const deleteModalConfirmButton = document.querySelector(
-      ".delete-modal__confirm-button"
-    );
-    deleteModalConfirmButton.addEventListener("click", () => {
-      tasks = [
-        ...tasks.filter(({ id }) => {
-          return id !== taskItem.dataset.id;
-        }),
-      ];
-      modalOverlay.classList.add("modal-overlay_hidden");
-      renderTasks();
-    });
+    console.log("taskItem in delete listener", taskItem);
+    currentTaskId = taskItem.dataset.id;
+    console.log("currentTaskId in in delete listener", currentTaskId);
   }
 });
 
 // #endregion 14-dom-work part 2 task 3
 
-// https://codesandbox.io/p/sandbox/xzf2w5
+// #region 14-dom-work part 2 task 4
+
+let theme = "light";
+
+const changeTheme = () => {
+  theme = theme === "light" ? "dark" : "light";
+
+  const lightThemeValues = {
+    bodyBackgroundColor: "initial",
+    taskItemsColor: "initial",
+    buttonBorder: "none",
+  };
+
+  const darkThemeValues = {
+    bodyBackgroundColor: "#24292E",
+    taskItemsColor: "#ffff",
+    buttonBorder: "1px solid #ffff",
+  };
+
+  const body = document.querySelector("body");
+  const taskItems = document.querySelectorAll(".task-item");
+  const buttons = document.querySelectorAll("button");
+  if (theme === "dark") {
+    body.style.background = darkThemeValues.bodyBackgroundColor;
+    taskItems.forEach((taskItem) => {
+      taskItem.style.color = darkThemeValues.taskItemsColor;
+    });
+    buttons.forEach((button) => {
+      button.style.border = darkThemeValues.buttonBorder;
+    });
+  } else if (theme === "light") {
+    body.style.background = lightThemeValues.bodyBackgroundColor;
+    taskItems.forEach((taskItem) => {
+      taskItem.style.color = lightThemeValues.taskItemsColor;
+    });
+    buttons.forEach((button) => {
+      button.style.border = lightThemeValues.buttonBorder;
+    });
+  }
+};
+
+document.addEventListener("keydown", (e) => {
+  const { key } = e;
+  if (key === "Tab") {
+    changeTheme();
+  }
+});
+
+// #endregion 14-dom-work part 2 task 4
+
+//
 
 /* 14-dom-work part 1 task 2
 
@@ -235,6 +293,8 @@ const tasks = \[ { id: '1138465078061', completed: false, text: 'Посмотр�
 **Примечание:** атрибут for в JavaScript-коде пишется как htmlFor.
 
 У вас имеются начальные файлы: [ссылка](https://github.com/vmschool/14). Используйте их для разработки логики приложения.
+
+https://codesandbox.io/p/sandbox/p73ynj
  */
 
 /* 14-dom-work part 2 task 1
@@ -246,6 +306,8 @@ const tasks = \[ { id: '1138465078061', completed: false, text: 'Посмотр�
 **Подсказка:** для получения уникального id можно воспользоваться Date.now().
 
 У вас имеются начальные файлы: [ссылка](https://github.com/vmschool/14). Используйте их для разработки логики приложения.
+
+https://codesandbox.io/p/sandbox/jzv5sz
  */
 
 /* 14-dom-work part 2 task 2
@@ -259,6 +321,8 @@ const tasks = \[ { id: '1138465078061', completed: false, text: 'Посмотр�
 Если при отправке формы ошибок не было найдено, то удалите блок с ошибкой, если он существует в DOM, и создайте новую задачу в списке.
 
 У вас имеются начальные файлы: [ссылка](https://github.com/vmschool/14). Используйте их для разработки логики приложения.
+
+https://codesandbox.io/p/sandbox/d25z5v
  */
 
 /* 14-dom-work part 2 task 3
@@ -280,4 +344,27 @@ const tasks = \[ { id: '1138465078061', completed: false, text: 'Посмотр�
 Для удаления задачи используйте атрибут data-task-id, который содержит информацию о свойстве id объекта задачи из массива tasks. По данному id вы сможете найти нужную задачу и удалить ее.
 
 У вас имеются начальные файлы: [ссылка](https://github.com/vmschool/14). Используйте их для разработки логики приложения.
+
+https://codesandbox.io/p/sandbox/xzf2w5
+ */
+
+/* 14-dom-work part 2 task 3
+
+Заказчик и команда разработки поздравляют вас с успешной работой на проекте. Вы молодцы! Хорошо себя показали.
+
+Но тут один из разработчиков заболел и больше некому выполнить его задачу. Поэтому вас попросили подменить коллегу.
+
+Вам необходимо реализовать смену темы с темной на светлую и наоборот. Тема должна переключаться при нажатии на кнопку «Tab». Изначально тема светлая.
+
+При смене темы вам необходимо изменить стили для следующих элементов:
+
+1.  Элемент с тегом <body>. Если тема темная, то свойство background должно быть значением #24292E, иначе - initial.
+2.  Все элементы по селектору .task-item. Если тема темная, то свойство color должно быть #ffffff, иначе - initial.
+3.  Ко всем элементам с тегом button необходимо добавить значение border: 1px solid #ffffff, если тема темная, иначе - border: none.
+
+Для решения данной задачи используйте свойства style у html-элементов.
+
+У вас имеются начальные файлы: [ссылка](https://github.com/vmschool/14). Используйте их для разработки логики приложения.
+
+https://codesandbox.io/p/sandbox/slk287
  */

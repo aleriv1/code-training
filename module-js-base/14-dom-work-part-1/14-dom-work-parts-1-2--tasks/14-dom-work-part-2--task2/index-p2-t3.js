@@ -19,6 +19,8 @@ let tasks = [
   },
 ];
 
+let currentTaskId = null;
+
 const tasksList = document.querySelector(".tasks-list");
 
 function renderTasks() {
@@ -69,6 +71,7 @@ function renderTasks() {
 
     return taskItem;
   }
+  console.log("tasks in renderTasks()", tasks);
 
   tasks.forEach(({ id, completed, text }) => {
     const task = createTaskEl(id, completed, text);
@@ -170,6 +173,7 @@ const createDeleteModal = () => {
 
   deleteModalButtonCancel.addEventListener("click", () => {
     modalOverlay.classList.add("modal-overlay_hidden");
+    console.log("tasks in cancel button", tasks);
   });
 
   deleteModalButtons.append(deleteModalButtonCancel);
@@ -180,6 +184,21 @@ const createDeleteModal = () => {
     "delete-modal__confirm-button"
   );
   deleteModalButtonConfirm.textContent = "Удалить";
+
+  deleteModalButtonConfirm.addEventListener("click", () => {
+    console.log("confirm click");
+    console.log("currentTaskId", currentTaskId);
+    if (!currentTaskId) return;
+    tasks = [
+      ...tasks.filter(({ id }) => {
+        return id !== currentTaskId;
+      }),
+    ];
+    modalOverlay.classList.add("modal-overlay_hidden");
+    currentTaskId = null;
+    renderTasks();
+  });
+
   deleteModalButtons.append(deleteModalButtonConfirm);
 
   deleteModal.append(deleteModalButtons);
@@ -197,18 +216,9 @@ tasksList.addEventListener("click", (e) => {
   if (isDeleteButton) {
     modalOverlay.classList.remove("modal-overlay_hidden");
     const taskItem = e.target.closest(".task-item");
-    const deleteModalConfirmButton = document.querySelector(
-      ".delete-modal__confirm-button"
-    );
-    deleteModalConfirmButton.addEventListener("click", () => {
-      tasks = [
-        ...tasks.filter(({ id }) => {
-          return id !== taskItem.dataset.id;
-        }),
-      ];
-      modalOverlay.classList.add("modal-overlay_hidden");
-      renderTasks();
-    });
+    console.log("taskItem in delete listener", taskItem);
+    currentTaskId = taskItem.dataset.id;
+    console.log("currentTaskId in in delete listener", currentTaskId);
   }
 });
 
