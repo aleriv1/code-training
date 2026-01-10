@@ -1,0 +1,12 @@
+@use "variables";
+
+.container-main {
+  display: flex;
+  // background: variables.$main-color;
+
+  [id] {
+    flex-basis: 25%;
+    flex-grow: 0.5;
+    flex-shrink: 2;
+  }
+}

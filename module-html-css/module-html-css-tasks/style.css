@@ -1,0 +1,16 @@
+.yuji-boku-regular {
+  font-family: "Yuji Boku", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.main-head-name {
+  /* text-align: center; */
+  color: green;
+  font-size: 36px;
+  font-style: italic;
+}
+
+.profile-img {
+  border-radius: 10px;
+}

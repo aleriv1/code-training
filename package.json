@@ -1,0 +1,12 @@
+{
+  "name": "Aleksandr",
+  "version": "1.0.0",
+  "description": "html-css-basics",
+  "main": "index.js",
+  "repository": "https://github.com/aleriv1/code-training",
+  "author": "Aleksandr <aleksandr_ermakov@outlook.com>",
+  "license": "MIT",
+  "dependencies": {
+    "sass": "^1.97.2"
+  }
+}

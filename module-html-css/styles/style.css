@@ -1,0 +1,10 @@
+.container-main {
+  display: flex;
+}
+.container-main [id] {
+  flex-basis: 25%;
+  flex-grow: 0.5;
+  flex-shrink: 2;
+}
+
+/*# sourceMappingURL=style.css.map */
