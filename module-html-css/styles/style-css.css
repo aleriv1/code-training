@@ -1,0 +1,7 @@
+.alena-img {
+  &:hover {
+    transform: scale(2);
+  }
+
+  transition: all 0.5s ease-in-out;
+}

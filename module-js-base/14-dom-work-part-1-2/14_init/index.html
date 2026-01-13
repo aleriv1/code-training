@@ -1,50 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="index.css" />
+  <!-- <script src="html-el-methods.js" defer></script> -->
+  <!-- <script src="listeners.js" defer></script> -->
+  <script src="event-delegation.js" defer></script>
   <title>Работа с DOM</title>
 </head>
+
 <body>
   <div class="main-navigation">
-    <a
-      class="main-navigation__button-item"
-      href="#tasks_today"
-      data-button-id="1"
-    >
+    <a class="main-navigation__button-item" href="#tasks_today" data-button-id="1">
       Задачи на Сегодня
     </a>
-    <a
-      class="main-navigation__button-item"
-      href="#tasks_week"
-      data-button-id="2"
-    >
+    <a class="main-navigation__button-item" href="#tasks_week" data-button-id="2">
       Задачи на Эту Неделю
     </a>
-    <a
-      class="main-navigation__button-item"
-      href="#tasks_later"
-      data-button-id="3"
-    >
+    <a class="main-navigation__button-item" href="#tasks_later" data-button-id="3">
       Задачи на Потом
     </a>
   </div>
   <div id="tasks">
     <div class="tasks__wrapper">
       <form class="create-task-block">
-        <input
-          name="taskName"
-          class="create-task-block__input default-text-input"
-          type="text"
-          placeholder="Создайте новую задачу"
-          value="Посмотреть урок по JavaScript"
-        >
-        <button
-          type="submit"
-          class="create-task-block__button default-button"
-        >
+        <input name="taskName" class="create-task-block__input default-text-input" type="text"
+          placeholder="Создайте новую задачу" value="Посмотреть урок по JavaScript">
+        <button type="submit" class="create-task-block__button default-button">
           Создать
         </button>
       </form>
@@ -82,6 +67,7 @@
     </div>
   </div>
 
-  <script src="5_event-delegation.js"></script>
+  <!-- <script src="5_event-delegation.js"></script> -->
 </body>
+
 </html>

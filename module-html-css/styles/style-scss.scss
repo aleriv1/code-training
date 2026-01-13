@@ -1,0 +1,41 @@
+@use "variables";
+
+:root {
+  --alt-color: limegreen;
+}
+
+.container-main {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.container-part {
+  display: flex;
+  flex-direction: column;
+  border: 3px solid #0c8671;
+  border-radius: 15px;
+  padding: 10px 15px;
+  gap: 5px;
+  // background: variables.$main-color;
+  // background: var(--alt-color);
+
+  // [id] {}
+}
+
+.container-heading {
+  text-align: center;
+}
+
+.container-content {
+  display: flex;
+  gap: 10px;
+  & > * {
+    flex-basis: 25%;
+    flex-grow: 0.5;
+    flex-shrink: 2;
+    border: 2px solid #0c8671;
+    border-radius: 15px;
+    padding: 5px 10px;
+  }
+}

@@ -18,7 +18,10 @@ class classForArray {
 const arrayToPlay = [
   new classForArray("Aleksand", "tiger", 39),
   new classForArray("Alena", "panther", 26),
+  new classForArray("Alena1", "panther", 26),
 ];
+
+console.log(arrayToPlay);
 
 console.log(arrayToPlay[0].getInfo());
 
@@ -35,17 +38,27 @@ const mapArrayToPlay = arrayToPlay.map((person) => {
 console.log(mapArrayToPlay);
 
 // acc.push(...Object.values(el));
-const reduceArrayToPlay = arrayToPlay.reduce((acc, el) => {
-  // acc.push(...Object.values(el));
-  // acc["name"] += ` ${el.name}`;
-  Object.keys(el).forEach((key) => {
-    if (key === "name") {
-      acc[key] += `${el[key]}`;
-      return;
-    }
-    acc[key] += ` ${el[key]}`;
-  });
-  return acc;
+const reduceArrayToPlay = arrayToPlay.reduce(
+  (acc, el) => {
+    // acc.push(...Object.values(el));
+    // acc["name"] += ` ${el.name}`;
+    Object.keys(el).forEach((key) => {
+      if (key === "name") {
+        acc[key] += `${el[key]}`;
+        return;
+      }
+      acc[key] += ` ${el[key]}`;
+    });
+    return acc;
+  },
+  { ...arrayToPlay[0] }
+);
+
+// console.log(reduceArrayToPlay);
+
+const filteredArrayToPlay = arrayToPlay.filter(({ name }) => {
+  return name.includes("Alena");
 });
 
-console.log(reduceArrayToPlay);
+console.log(arrayToPlay);
+console.log(filteredArrayToPlay);

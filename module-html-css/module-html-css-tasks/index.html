@@ -36,8 +36,54 @@
   <ul class="common-list">
     <li class="common-list__item">Путешествия</li>
     <li class="common-list__item">Баскетбол</li>
-    <li class="common-list__item">Баскетбол</li>
+    <li class="common-list__item">Наука</li>
   </ul>
+
+  <!-- table.data-table>(thead>tr>td*3)+(tbody>((tr>(td*3))*2)) -->
+  <table class="data-table">
+    <caption>Experience</caption>
+    <thead>
+      <tr>
+        <th>Title of the work</th>
+        <th>Position</th>
+        <th>Year</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Taxcom</td>
+        <td>Technical support specialist</td>
+        <td>2018</td>
+      </tr>
+      <tr>
+        <td>Gorelektrotrans</td>
+        <td>it specialist</td>
+        <td>2022-present</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <form action="" class="form-to-contact">
+    <h2 class="form-to-contact__heading">Свяжитесь со мной</h2>
+
+    <div class="container-input">
+      <label name="name" class="form-to-contact__inpput-label" for="name">Ваше имя:</label><input
+        class="form-to-contact__input" type="text" placeholder="Введите имя" id="name">
+    </div>
+
+    <div class="container-input">
+      <label for="email">Ваш email:</label>
+      <input name="email" class="form-to-contact__input" type="text" placeholder="Введите email" id="email">
+    </div>
+
+    <div class="container-input container-input--message">
+      <label for="message-area">Ваше сообщение:</label>
+      <textarea class="form-to-contact__ta" id="message-area" name="message"></textarea>
+    </div>
+
+    <button class="form-to-contact__button">Отправить</button>
+
+  </form>
 
 </body>
 
