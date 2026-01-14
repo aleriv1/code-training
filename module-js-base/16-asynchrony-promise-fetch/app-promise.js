@@ -1,12 +1,12 @@
-const numberOfElements = 50;
+const numberOfElements = 3;
 
 // #region syncrhonous code example
 
-console.log("loop begin");
+console.log("loop begin, synchronous code example");
 for (let i = 0; i < numberOfElements; i++) {
   console.log("i", i);
 }
-console.log("loop end");
+console.log("loop end, synchronous code example");
 
 // #endregion syncrhonous code example
 
@@ -20,6 +20,10 @@ console.log("loop end");
 // setInterval(() => console.log("setInterval"), 1000);
 
 // #region promise
+console.log(`
+  ---
+  promise explanation begin
+  \\/`);
 
 const developer = {
   name: "Aleksandr",
@@ -48,7 +52,7 @@ promise
   })
   .catch((error) => {
     console.log("error", error);
-    // ^! what is the difference bettween and it catching
+    // ^! what is the difference between an error and its catching
     // ^! what is the error processing
   })
   .finally(() => {
@@ -83,6 +87,12 @@ promiseCar
   });
 
 promiseCar.then(console.log).catch(console.log);
+
+// console.log(`
+//   /\\
+//   promise explanation begin
+//   ---
+//   `);
 
 // #endregion promise
 

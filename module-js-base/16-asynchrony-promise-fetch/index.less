@@ -5,9 +5,11 @@
   --circle-background: #8FD4C1;
   --border-color: #ffffff;
 }
+
 body {
   padding: 20px;
 }
+
 #data-container {
   counter-reset: li;
   list-style: none;
@@ -15,23 +17,27 @@ body {
   padding: 0;
   text-shadow: 0 1px 0 var(--text-shadow-color);
 }
+
 #data-container a {
   position: relative;
   display: block;
-  padding: 0.4em 0.4em 0.4em 2em;
-  margin: 0.5em 0;
+  padding: .4em .4em .4em 2em;
+  margin: .5em 0;
   background: var(--link-background);
   color: var(--text-color);
   text-decoration: none;
-  border-radius: 0.3em;
-  transition: 0.3s ease-out;
+  border-radius: .3em;
+  transition: .3s ease-out;
 }
+
 #data-container a:hover {
   background: var(--link-background);
 }
+
 #data-container a:hover:before {
   transform: rotate(360deg);
 }
+
 #data-container a:before {
   content: counter(li);
   counter-increment: li;
@@ -43,24 +49,27 @@ body {
   height: 2em;
   width: 2em;
   line-height: 2em;
-  border: 0.3em solid var(--border-color);
+  border: .3em solid var(--border-color);
   text-align: center;
   font-weight: bold;
   border-radius: 2em;
-  transition: all 0.3s ease-out;
+  transition: all .3s ease-out;
 }
+
 .alena {
   writing-mode: vertical-rl;
   text-orientation: upright;
   text-align: start;
   line-height: 1.5;
+  &:extend(.yuji-boku-regular);
 }
-.yuji-boku-regular,
-.alena {
+
+.yuji-boku-regular {
   font-family: "Yuji Boku", serif;
   font-weight: 400;
   font-style: normal;
 }
+
 img.avatar {
   border-radius: 50%;
   width: 50px;

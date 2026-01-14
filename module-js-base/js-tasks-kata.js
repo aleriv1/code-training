@@ -306,10 +306,10 @@ function finalGrade(exam, projects) {
   return exam > 90 || projects > 10
     ? 100
     : exam > 75 && projects >= 5
-      ? 90
-      : exam > 50 && projects >= 2
-        ? 75
-        : 0;
+    ? 90
+    : exam > 50 && projects >= 2
+    ? 75
+    : 0;
 }
 
 // #endregion finalGrade
@@ -1206,9 +1206,9 @@ invert({ a: 1, b: 2, c: 3 }) // { 1: a, 2: b, 3: c }
 
 function invert(obj) {
   const invKeyValue = Object.entries(obj).map(([key, value]) => {
-    return [value, key]
-  })
-  return Object.fromEntries(invKeyValue)
+    return [value, key];
+  });
+  return Object.fromEntries(invKeyValue);
 }
 
 // #endregion Invert
@@ -1252,25 +1252,24 @@ deepEqual(true, false); // false
  */
 
 function deepEqual(obj1, obj2) {
-  let check = true
+  let check = true;
 
   if (obj1 === null) {
-    return check = (obj2 === null) ? true : false
+    return (check = obj2 === null ? true : false);
   }
   if (obj2 === null) {
-    return check = (obj1 === null) ? true : false
+    return (check = obj1 === null ? true : false);
   }
 
   if (typeof obj1 !== `object` && typeof obj2 !== `object`) {
-    return check = obj1 === obj2 ? true : false
+    return (check = obj1 === obj2 ? true : false);
   }
 
   function testObj(obj1, obj2) {
-
     if (typeof obj2 === `object`) {
       for (let item1 in obj1) {
         if (!(item1 in obj2)) {
-          return check = false
+          return (check = false);
         }
       }
     }
@@ -1278,41 +1277,53 @@ function deepEqual(obj1, obj2) {
     if (typeof obj1 === `object`) {
       for (let item2 in obj2) {
         if (!(item2 in obj1)) {
-          return check = false
+          return (check = false);
         }
       }
     }
 
-    let arrOfObjEtnr1 = Object.entries(obj1)
+    let arrOfObjEtnr1 = Object.entries(obj1);
 
     for (let item of arrOfObjEtnr1) {
-
-      let objEtnr2 = Object.entries(obj2)
+      let objEtnr2 = Object.entries(obj2);
 
       // #region filer
-      let filterNotObjValue1 = arrOfObjEtnr1.filter(([key, value]) => {
-        return typeof value !== `object`
-      }).sort()
+      let filterNotObjValue1 = arrOfObjEtnr1
+        .filter(([key, value]) => {
+          return typeof value !== `object`;
+        })
+        .sort();
 
-      let filterNotObjValue2 = objEtnr2.filter(([key, value]) => {
-        return typeof value !== `object`
-      }).sort()
+      let filterNotObjValue2 = objEtnr2
+        .filter(([key, value]) => {
+          return typeof value !== `object`;
+        })
+        .sort();
 
       let objValue1 = Object.entries(obj1).filter(([key, value]) => {
-        return typeof value === `object`
-      })
+        return typeof value === `object`;
+      });
       // #endregion filer
 
-      if (filterNotObjValue1.length !== 0 && !(filterNotObjValue1.length === filterNotObjValue2.length && filterNotObjValue1.every((value, index) => value.toString() === filterNotObjValue2[index].toString()))) {
-        return check = false
+      if (
+        filterNotObjValue1.length !== 0 &&
+        !(
+          filterNotObjValue1.length === filterNotObjValue2.length &&
+          filterNotObjValue1.every(
+            (value, index) =>
+              value.toString() === filterNotObjValue2[index].toString()
+          )
+        )
+      ) {
+        return (check = false);
       } else if (objValue1.length !== 0) {
-        testObj(item[1], obj2[item[0]])
+        testObj(item[1], obj2[item[0]]);
       }
     }
-    return check
+    return check;
   }
 
-  return testObj(obj1, obj2)
+  return testObj(obj1, obj2);
 }
 
 // #endregion deepEqual
@@ -1350,7 +1361,7 @@ const sum = (...args) => {
   //   return acc + num
   // }, 0)
 
-  return args.reduce((acc, item) => acc += isFinite(item) ? +item : 0, 0)
+  return args.reduce((acc, item) => (acc += isFinite(item) ? +item : 0), 0);
 };
 
 // #endregion Sum
@@ -1391,7 +1402,7 @@ console.log(
  */
 
 const merge = (...obj) => {
-  return Object.assign(...obj)
+  return Object.assign(...obj);
   //   return obj.reduce((acc, item) => {
   //     return { ...acc, ...item }
   //     // return Object.assign(acc, item)
@@ -1401,9 +1412,9 @@ const merge = (...obj) => {
 // #endregion Merge
 
 // #region getArrayCounts
-https://platform.kata.academy/user/courses/21/2/1/11
 
 /* 
+https://platform.kata.academy/user/courses/21/2/1/11
 getArraysCounts
 Реализуйте функцию getArraysCounts, которая принимает массив в качестве аргумента. Функция должна вернуть Map, в котором ключи - все уникальные элементы в массиве, а значения - количество этих элементов в массиве.
 
@@ -1426,18 +1437,20 @@ const getArraysCounts = (arr) => {
   let mapToReturn = new Map();
 
   for (let dataValue of data) {
-    setToSort.add(dataValue)
+    setToSort.add(dataValue);
   }
 
   for (let setValue of setToSort) {
-    let countSetValue = data.filter((item) => item === setValue || (Number.isNaN(item) && Number.isNaN(setValue))).length
+    let countSetValue = data.filter(
+      (item) =>
+        item === setValue || (Number.isNaN(item) && Number.isNaN(setValue))
+    ).length;
 
-    mapToReturn.set(setValue, countSetValue)
+    mapToReturn.set(setValue, countSetValue);
   }
 
-  return mapToReturn
+  return mapToReturn;
 };
-
 
 // #endregion getArrayCounts
 
@@ -1466,7 +1479,7 @@ console.log(result[1] === obj); // false
  */
 
 const unique = (arr) => {
-  return Array.from(new Set(arr))
+  return Array.from(new Set(arr));
 };
 
 // #endregion Unique
@@ -1498,7 +1511,7 @@ const getDaysBetweenDates = (date1, date2) => {
   //code here
   // if (arguments.length < 2) {
   if (!date2) {
-    throw new TypeError('');
+    throw new TypeError("");
   }
 
   let d1 = date1 instanceof Date ? date1 : new Date(date1);
@@ -1512,7 +1525,11 @@ const getDaysBetweenDates = (date1, date2) => {
   // const diff = d2.getTime() - d1.getTime();
   // return Math.floor(diff / (1000 * 60 * 60 * 24));
   let days = Math.floor(diff / (1000 * 60 * 60 * 24));
-  return d1.getTime() > d2.getTime() && days > 1 ? -days : d1.getTime() > d2.getTime() && days < 1 ? 0 : days
+  return d1.getTime() > d2.getTime() && days > 1
+    ? -days
+    : d1.getTime() > d2.getTime() && days < 1
+    ? 0
+    : days;
 };
 
 // #endregion getDaysBetweenDates
@@ -1538,7 +1555,7 @@ isEmptyWithProtos({}); // -> false
  */
 
 function isEmpty(obj) {
-  return Object.keys(obj).length === 0 ? true : false
+  return Object.keys(obj).length === 0 ? true : false;
 }
 
 function isEmptyWithProtos(obj) {
@@ -1586,37 +1603,36 @@ function Book(name, author, year) {
   this.reader = null;
 }
 
-Book.prototype =
-{
+Book.prototype = {
   isAvailable: function () {
-    console.log(`this.reader now is:`, this.reader)
-    return this.reader ? false : true
+    console.log(`this.reader now is:`, this.reader);
+    return this.reader ? false : true;
   },
   takeBook(readerName) {
     if (this.isAvailable()) {
       this.reader = readerName;
-      console.log(`this.reader now is:`, this.reader)
-      return true
+      console.log(`this.reader now is:`, this.reader);
+      return true;
     }
-    return false
+    return false;
   },
   returnBook() {
-    let returnCheck = this.isAvailable() ? false : true
+    let returnCheck = this.isAvailable() ? false : true;
     this.reader = null;
-    return returnCheck
+    return returnCheck;
   },
   changeBookName(newBookName) {
-    this.name = newBookName
-    return this.name === newBookName ? true : false
+    this.name = newBookName;
+    return this.name === newBookName ? true : false;
   },
   changeAuthorName(newAuthorName) {
-    this.author = newAuthorName
-    return this.author === newAuthorName ? true : false
+    this.author = newAuthorName;
+    return this.author === newAuthorName ? true : false;
   },
   getCurrentReader() {
-    return this.reader
-  }
-}
+    return this.reader;
+  },
+};
 
 // #endregion Library
 
@@ -1651,11 +1667,11 @@ class Addition {
 // Write you code here
 function logCall(func) {
   return function (...nums) {
-    console.log(`called`)
-    return func.apply(this, nums)
-  }
+    console.log(`called`);
+    return func.apply(this, nums);
+  };
 }
-Addition.prototype.add = logCall(Addition.prototype.add)
+Addition.prototype.add = logCall(Addition.prototype.add);
 // End of code
 
 // #endregion Prototypes Decorator
@@ -1707,12 +1723,12 @@ B.hasOwnProperty('objectName'); // true
  */
 
 Object.create = function (proto, propertiesObject) {
-  if (typeof proto !== 'object' && proto !== null) {
-    throw new TypeError('Prototype must be an object or null');
+  if (typeof proto !== "object" && proto !== null) {
+    throw new TypeError("Prototype must be an object or null");
   }
 
-  if (propertiesObject !== undefined && typeof propertiesObject !== 'object') {
-    throw new TypeError('Properties must be an object or undefined');
+  if (propertiesObject !== undefined && typeof propertiesObject !== "object") {
+    throw new TypeError("Properties must be an object or undefined");
   }
 
   const obj = Object.setPrototypeOf({}, proto);
@@ -1776,10 +1792,10 @@ class Person {
     const today = new Date(`2019-05-23`);
     let age = today.getFullYear() - this.birthDate.getFullYear();
     const monthDiff = today.getMonth() - this.birthDate.getMonth();
-    const dayDiff = today.getDate() - this.birthDate.getDate()
+    const dayDiff = today.getDate() - this.birthDate.getDate();
 
     if (monthDiff < 0 || (monthDiff === 0 && dayDiff < 0)) {
-      age--
+      age--;
     }
 
     return age;
@@ -1801,7 +1817,7 @@ class Account {
     this.balance += amount;
     this.history.push({
       timestamp: Date.now(),
-      target: 'in',
+      target: "in",
       amount,
       description,
     });
@@ -1811,7 +1827,7 @@ class Account {
     this.balance -= amount;
     this.history.push({
       timestamp: Date.now(),
-      target: 'out',
+      target: "out",
       amount,
       description,
     });
@@ -1906,13 +1922,15 @@ class EventEmitter {
     if (!this.events[eventName]) {
       this.events[eventName] = [];
     }
-    this.events[eventName].push(callback)
+    this.events[eventName].push(callback);
   }
 
   off(eventName, callback) {
     // code here
     if (this.events[eventName]) {
-      this.events[eventName] = this.events[eventName].filter(cb => cb !== callback)
+      this.events[eventName] = this.events[eventName].filter(
+        (cb) => cb !== callback
+      );
     }
   }
 
@@ -1928,14 +1946,16 @@ class EventEmitter {
   emit(eventName, ...args) {
     // code here
     if (this.events[eventName]) {
-      this.events[eventName].forEach(callback => callback(...args));
+      this.events[eventName].forEach((callback) => callback(...args));
     }
   }
 }
 
 class BroadcastEventEmitter extends EventEmitter {
   emit(evenName, ...args) {
-    Object.values(this.events).forEach(callbacks => callbacks.forEach(callback => callback(...args)))
+    Object.values(this.events).forEach((callbacks) =>
+      callbacks.forEach((callback) => callback(...args))
+    );
   }
 }
 
@@ -1967,27 +1987,31 @@ arraysToCsv([[1, 2], ['a,b', 'c,d']]) // '1,2
 
 function arrayToCsv(data) {
   try {
-    const strCSVarr = []
+    const strCSVarr = [];
 
     for (let value of data) {
       for (let valueIn of value) {
-        if (typeof valueIn !== 'string' && typeof valueIn !== 'number') {
-          throw new Error('Unexpected value')
+        if (typeof valueIn !== "string" && typeof valueIn !== "number") {
+          throw new Error("Unexpected value");
         }
       }
 
       let newValue = value.map((item) => {
-        return typeof item === 'string' && (item.includes(',') || item.includes('"')) ? `"${item.replace(/"/g, '""')}"` :
-          typeof item === 'string' ? item.replace(/"/g, '""') : item
-      })
-      strCSVarr.push(newValue)
+        return typeof item === "string" &&
+          (item.includes(",") || item.includes('"'))
+          ? `"${item.replace(/"/g, '""')}"`
+          : typeof item === "string"
+          ? item.replace(/"/g, '""')
+          : item;
+      });
+      strCSVarr.push(newValue);
     }
-    console.log(strCSVarr)
-    console.log(strCSVarr.join('\n'))
-    return strCSVarr.join('\n')
+    console.log(strCSVarr);
+    console.log(strCSVarr.join("\n"));
+    return strCSVarr.join("\n");
   } catch (error) {
-    console.log(error.message)
-    throw error
+    console.log(error.message);
+    throw error;
   }
 }
 
@@ -2005,14 +2029,14 @@ function arrayToCsv(data) {
 
 function incrementCounter(counterName) {
   try {
-    const counters = JSON.parse(localStorage.getItem('counters'));
+    const counters = JSON.parse(localStorage.getItem("counters"));
     counters[counterName] = (counters[counterName] || 0) + 1;
-    localStorage.setItem('counters', JSON.stringify(counters));
+    localStorage.setItem("counters", JSON.stringify(counters));
     return counters[counterName];
   } catch (e) {
     const counters = {};
     counters[counterName] = 1;
-    localStorage.setItem('counters', JSON.stringify(counters));
+    localStorage.setItem("counters", JSON.stringify(counters));
     return 1;
   }
 }
@@ -2056,22 +2080,22 @@ const res = getRepeatableData(getData, '1', 3); // 'hello1'
 
 class AttemptsLimitExceeded extends Error {
   constructor() {
-    super('Max attempts limit exceed');
-    this.name = 'AttemptsLimitExceeded';
+    super("Max attempts limit exceed");
+    this.name = "AttemptsLimitExceeded";
   }
 }
 
 class NotFoundError extends Error {
   constructor() {
-    super('Not found');
-    this.name = 'NotFoundError';
+    super("Not found");
+    this.name = "NotFoundError";
   }
 }
 
 class TemporaryError extends Error {
   constructor() {
-    super('TemporaryError');
-    this.name = 'TemporaryError';
+    super("TemporaryError");
+    this.name = "TemporaryError";
   }
 }
 
@@ -2079,19 +2103,18 @@ function getRepeatableData(getData, key, maxRequestsNumber = Infinity) {
   //ваш код здесь
   try {
     // console.log('try')
-    let func = getData(key)
-    return func
-
+    let func = getData(key);
+    return func;
   } catch (err) {
     if (err instanceof NotFoundError) {
-      console.log('NotFoundError')
-      throw err
+      console.log("NotFoundError");
+      throw err;
     } else if (err instanceof TemporaryError) {
       if (maxRequestsNumber === 1) {
-        console.log('AttemptsLimitExceeded')
-        throw new AttemptsLimitExceeded()
+        console.log("AttemptsLimitExceeded");
+        throw new AttemptsLimitExceeded();
       } else {
-        return getRepeatableData(getData, key, maxRequestsNumber - 1)
+        return getRepeatableData(getData, key, maxRequestsNumber - 1);
       }
     }
   }
@@ -2154,34 +2177,33 @@ errors[0].getArgData(); // '{}'
 
 class ExecutionError extends Error {
   constructor(arg, stack) {
-    super()
+    super();
     this.arg = arg;
-    this.stack = stack
+    this.stack = stack;
   }
 
   getArgData() {
-    return this.arg
+    return this.arg;
   }
 }
 
 function applyFn(dataArr, callback) {
-
-  let succeeded = []
-  let errors = []
+  let succeeded = [];
+  let errors = [];
 
   // dataArr.forEach((value) => {
   dataArr.forEach((arg) => {
     try {
       // succeeded.push(callback(value))
-      succeeded.push(callback(arg))
+      succeeded.push(callback(arg));
     } catch (error) {
       // const executionError = new ExecutionError(value, error.stack);
       const executionError = new ExecutionError(arg, error.stack);
       errors.push(executionError);
     }
-  })
+  });
 
-  return { succeeded, errors }
+  return { succeeded, errors };
 }
 
 // #endregion Apply Functions
@@ -2204,7 +2226,7 @@ SumFileSizes
 let fileSizes = {
   testFile1: 65,
   testFile2: 48,
-}
+};
 
 function getFileSize(filename, cb) {
   setTimeout(() => cb(fileSizes[filename]), Math.random() * 500);
@@ -2213,9 +2235,9 @@ function getFileSize(filename, cb) {
 function sumFileSizes(filename1, filename2, cb) {
   getFileSize(filename1, function (size1) {
     getFileSize(filename2, function (size2) {
-      cb(size1 + size2)
-    })
-  })
+      cb(size1 + size2);
+    });
+  });
 }
 
 /* This function uses the getFileSize function to get the sizes of both files, and then calls the callback function cb with the sum of the two sizes.
@@ -2245,8 +2267,10 @@ function sumFileSizes(filename1, filename2, cb) {
 Alternatively, you can use Promise to make the code more readable and efficient: */
 
 function sumFileSizes(filename1, filename2, cb) {
-  Promise.all([getFileSizePromise(filename1), getFileSizePromise(filename2)])
-    .then((sizes) => cb(sizes[0] + sizes[1]));
+  Promise.all([
+    getFileSizePromise(filename1),
+    getFileSizePromise(filename2),
+  ]).then((sizes) => cb(sizes[0] + sizes[1]));
 
   function getFileSizePromise(filename) {
     return new Promise((resolve) => {
@@ -2359,18 +2383,22 @@ Note that we use then() to chain the promises together, and catch() to handle an
  */
 
 function increaseSalary() {
-  return api.getEmployees()
-    .then(employees => {
-      const lowestSalaryEmployee = employees.reduce((min, current) => current.salary < min.salary ? current : min, employees[0]);
+  return api
+    .getEmployees()
+    .then((employees) => {
+      const lowestSalaryEmployee = employees.reduce(
+        (min, current) => (current.salary < min.salary ? current : min),
+        employees[0]
+      );
       const newSalary = lowestSalaryEmployee.salary * 1.2;
       return api.setEmployeeSalary(lowestSalaryEmployee.id, newSalary);
     })
-    .then(updatedEmployee => {
+    .then((updatedEmployee) => {
       const notificationText = `Hello, ${updatedEmployee.name}! Congratulations, your new salary is ${updatedEmployee.salary}!`;
       return api.notifyEmployee(updatedEmployee.id, notificationText);
     })
     .then(() => true)
-    .catch(error => {
+    .catch((error) => {
       api.notifyAdmin(error);
       return false;
     });
@@ -2378,9 +2406,9 @@ function increaseSalary() {
 
 const api = {
   _employees: [
-    { id: 1, name: 'Alex', salary: 120000 },
-    { id: 2, name: 'Fred', salary: 110000 },
-    { id: 3, name: 'Bob', salary: 80000 },
+    { id: 1, name: "Alex", salary: 120000 },
+    { id: 2, name: "Fred", salary: 110000 },
+    { id: 3, name: "Bob", salary: 80000 },
   ],
 
   getEmployees() {
@@ -2395,9 +2423,9 @@ const api = {
         employee.id !== employeeId
           ? employee
           : {
-            ...employee,
-            salary: newSalary,
-          }
+              ...employee,
+              salary: newSalary,
+            }
       );
       resolve(this._employees.find(({ id }) => id === employeeId));
     });
@@ -2422,7 +2450,6 @@ const api = {
     });
   },
 };
-
 
 // #endregion increaseSalary
 
@@ -2454,11 +2481,13 @@ promiseRace([firstPromise, secondPromise, thirdPromise]); // 100
 function promiseRace(promises) {
   return new Promise((resolve, reject) => {
     promises.forEach((promise) => {
-      promise.then((result) => {
-        resolve(result);
-      }).catch((error) => {
-        reject(error);
-      });
+      promise
+        .then((result) => {
+          resolve(result);
+        })
+        .catch((error) => {
+          reject(error);
+        });
     });
   });
 }
@@ -2494,23 +2523,24 @@ promiseAll([firstPromise, secondPromise, thirdPromise])
 function promiseAll(promises) {
   return new Promise((resolve, reject) => {
     if (promises.length === 0) {
-      resolve([])
+      resolve([]);
     } else {
       const results = [];
       let completed = 0;
       for (let i = 0; i < promises.length; i++) {
-        promises[i].then((result) => {
-          results[i] = result;
-          completed++;
-          if (completed === promises.length) {
-            resolve(results);
-          }
-        }).catch((error) => {
-          reject(error);
-        });
+        promises[i]
+          .then((result) => {
+            results[i] = result;
+            completed++;
+            if (completed === promises.length) {
+              resolve(results);
+            }
+          })
+          .catch((error) => {
+            reject(error);
+          });
       }
     }
-
   });
 }
 
@@ -2551,7 +2581,9 @@ async function increaseSalary() {
     const employees = await api.getEmployees();
 
     // 2. Calculate the arithmetic mean for the salaries
-    const averageSalary = employees.reduce((sum, employee) => sum + employee.salary, 0) / employees.length;
+    const averageSalary =
+      employees.reduce((sum, employee) => sum + employee.salary, 0) /
+      employees.length;
 
     // Initialize counter for successfully increased salaries
     let increasedSalariesCount = 0;
@@ -2572,7 +2604,10 @@ async function increaseSalary() {
         await api.setEmployeeSalary(employee.id, newSalary);
 
         // 4. Send a notification to the employee
-        await api.notifyEmployee(employee.id, `Hello, ${employee.name}! Congratulations, your new salary is ${newSalary}!`);
+        await api.notifyEmployee(
+          employee.id,
+          `Hello, ${employee.name}! Congratulations, your new salary is ${newSalary}!`
+        );
 
         // Increment the counter for successfully increased salaries
         increasedSalariesCount++;
@@ -2624,32 +2659,44 @@ api.notifyAdmin(error); // Accepts the error
 api.sendBudgetToAccounting(summarySalaries); // Accepts the total salary
  */
 
-
 async function increaseSalary() {
   try {
     // 1. Get data on all employees
     const employees = await api.getEmployees();
 
     // 2. Calculate the arithmetic mean for the salaries
-    const averageSalary = employees.reduce((sum, employee) => sum + employee.salary, 0) / employees.length;
+    const averageSalary =
+      employees.reduce((sum, employee) => sum + employee.salary, 0) /
+      employees.length;
 
     // 3. For those employees whose salaries are less than the average, we increase them by 20%, for those who are more, we increase them by 10%
     const updatedEmployees = employees.map((employee) => {
-      const newSalary = employee.salary < averageSalary ? employee.salary * 1.2 : employee.salary * 1.1;
+      const newSalary =
+        employee.salary < averageSalary
+          ? employee.salary * 1.2
+          : employee.salary * 1.1;
       return { ...employee, salary: newSalary };
     });
 
     // 4. If the request is successful, send the employee a notification about the salary increase
-    await Promise.all(updatedEmployees.map((employee) => {
-      api.notifyEmployee(employee.id, `Hello, ${employee.name}! Congratulations, your new salary is ${employee.salary}!`);
-      return api.setEmployeeSalary(employee.id, employee.salary);
-    }));
+    await Promise.all(
+      updatedEmployees.map((employee) => {
+        api.notifyEmployee(
+          employee.id,
+          `Hello, ${employee.name}! Congratulations, your new salary is ${employee.salary}!`
+        );
+        return api.setEmployeeSalary(employee.id, employee.salary);
+      })
+    );
 
     // 5. If the request fails, send the error data to the administrator
     // (Note: this is not actually needed in this implementation, as we're using try-catch to handle errors)
 
     // 6. As a result, send the total salaries of employees after the increase to the accounting department
-    const totalSalaries = updatedEmployees.reduce((sum, employee) => sum + employee.salary, 0);
+    const totalSalaries = updatedEmployees.reduce(
+      (sum, employee) => sum + employee.salary,
+      0
+    );
     await api.sendBudgetToAccounting(totalSalaries);
 
     // Return the number of salaries successfully increased
@@ -2821,10 +2868,14 @@ const debounce = (fn, debounceTime) => {
   let timeout;
   return function () {
     clearTimeout(timeout);
-    timeout = setTimeout(() => fn.apply(this, arguments), debounceTime)
-  }
+    timeout = setTimeout(() => fn.apply(this, arguments), debounceTime);
+  };
 };
 
 // #endregion debounce
 
 // #endregion Работа с асинхронным кодом
+
+// #region
+
+// #endregion
