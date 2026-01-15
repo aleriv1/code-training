@@ -15,16 +15,7 @@
 <li><a href="#">Имя пользователя</a></li>
 Примечание: обязательно не забывайте прописывать .catch() (или используйте конструкцию try...catch). В них просто выводите ошибку в консоль при помощи console.error().*/
 
-const createUserElement = (userName) => {
-  const userEl = document.createElement("li");
-  const userElAnchor = document.createElement("a");
-
-  userElAnchor.href = "#";
-  userElAnchor.textContent = userName;
-  userEl.append(userElAnchor);
-
-  return userEl;
-};
+const dataContainer = document.querySelector("#data-container");
 
 const toggleLoader = () => {
   const loaderHTML = document.querySelector("#loader");
@@ -37,7 +28,16 @@ const toggleLoader = () => {
   }
 };
 
-const dataContainer = document.querySelector("#data-container");
+const createUserElement = (userName) => {
+  const userEl = document.createElement("li");
+  const userElAnchor = document.createElement("a");
+
+  userElAnchor.href = "#";
+  userElAnchor.textContent = userName;
+  userEl.append(userElAnchor);
+
+  return userEl;
+};
 
 function getAllUsers() {
   const USERS_URL = "https://jsonplaceholder.typicode.com/users";

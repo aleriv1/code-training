@@ -18,17 +18,6 @@ getUsersByIds([5, 6, 2, 1]);
 
 const dataContainer = document.querySelector("#data-container");
 
-const createUserElement = (userName) => {
-  const userEl = document.createElement("li");
-  const userElAnchor = document.createElement("a");
-
-  userElAnchor.href = "#";
-  userElAnchor.textContent = userName;
-  userEl.append(userElAnchor);
-
-  return userEl;
-};
-
 const toggleLoader = () => {
   const loaderHTML = document.querySelector("#loader");
   const isHidden = loaderHTML.hasAttribute("hidden");
@@ -38,6 +27,17 @@ const toggleLoader = () => {
   } else {
     loaderHTML.setAttribute("hidden", "");
   }
+};
+
+const createUserElement = (userName) => {
+  const userEl = document.createElement("li");
+  const userElAnchor = document.createElement("a");
+
+  userElAnchor.href = "#";
+  userElAnchor.textContent = userName;
+  userEl.append(userElAnchor);
+
+  return userEl;
 };
 
 const idsArray = [5, 3, 10];
