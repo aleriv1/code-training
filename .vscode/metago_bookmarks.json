@@ -1,7 +1,30 @@
 {
-    "documents": {},
+    "documents": {
+        "$ROOTPATH$\\module-js-base\\17-asynchrony-async-await\\17-async-await.js": {
+            "key": "$ROOTPATH$\\module-js-base\\17-asynchrony-async-await\\17-async-await.js",
+            "bookmarks": {
+                "40": {
+                    "line": 40,
+                    "char": 31
+                },
+                "137": {
+                    "line": 137,
+                    "char": 32
+                }
+            }
+        }
+    },
     "history": {
-        "history": [],
-        "index": -1
+        "history": [
+            {
+                "documentKey": "$ROOTPATH$\\module-js-base\\17-asynchrony-async-await\\17-async-await.js",
+                "bookmarkKey": "137"
+            },
+            {
+                "documentKey": "$ROOTPATH$\\module-js-base\\17-asynchrony-async-await\\17-async-await.js",
+                "bookmarkKey": "40"
+            }
+        ],
+        "index": 0
     }
 }

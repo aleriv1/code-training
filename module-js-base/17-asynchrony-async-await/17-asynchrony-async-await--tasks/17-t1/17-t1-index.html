@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>17-asynchrony-async-await task 1</title>
+
+</head>
+
+<body>
+
+  <p class="returned-todo">
+    <span id="loading">Loading...</span>
+  </p>
+  <script>
+    const POSTS_URL = "https://jsonplaceholder.typicode.com/posts";
+    let isLoading = false;
+
+    const createNewPost = () => {
+      isLoading = true;
+      fetch(POSTS_URL, {
+        method: "POST"
+      })
+        .then((response) => response.json())
+        .then((result) => {
+          console.log("result", result);
+        })
+        .catch((error) => {
+          console.log("error", error);
+        })
+        .finally(() => {
+          isLoading = false;
+        });
+    };
+    createNewPost();
+
+
+    const createNewPostAsync = async () => {
+      try {
+        isLoading = true
+        const fetchPost = await fetch(POSTS_URL, {
+          method: 'POST'
+        })
+        const posts = await fetchPost.json()
+
+        console.log(posts)
+      } catch (err) {
+        console.log('error', err)
+      }
+      finally {
+        const isLoadingEl = document.querySelector('#loading')
+        isLoading = false
+      }
+    }
+
+    createNewPostAsync()
+      .finally(() => {
+        const isLoadingEl = document.querySelector('#loading')
+        isLoading ? isLoadingEl.style.display = 'block' : isLoadingEl.style.display = 'none'
+        const returnedTodoEl = document.querySelector('.returned-todo')
+        returnedTodoEl.textContent = ''
+      })
+
+  </script>
+</body>
+
+</html>
