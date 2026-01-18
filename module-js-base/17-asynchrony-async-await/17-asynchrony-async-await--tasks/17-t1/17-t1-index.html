@@ -1,3 +1,29 @@
+<!-- 
+
+Требуется переписать данный код, использующий .then(), .catch() и .finally() в код, который использует исключительно async/await. и try...catch...finally:
+
+const POSTS_URL = "https://jsonplaceholder.typicode.com/posts";
+let isLoading = false;
+const createNewPost = () => {
+  isLoading = true;
+  fetch(POSTS_URL, {
+    method: "POST"
+  })
+    .then((response) => response.json())
+    .then((result) => {
+      console.log("result", result);
+    })
+    .catch((error) => {
+      console.log("error", error);
+    })
+    .finally(() => {
+      isLoading = false;
+    });
+};
+createNewPost();
+
+  -->
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,14 +39,38 @@
   <p class="returned-todo">
     <span id="loading">Loading...</span>
   </p>
-  <script>
-    const POSTS_URL = "https://jsonplaceholder.typicode.com/posts";
+  <script>/* 
+Требуется переписать данный код, использующий .then(), .catch() и .finally() в код, который использует исключительно async/await. и try...catch...finally:
+
+const POSTS_URL = "https://jsonplaceholder.typicode.com/posts";
+let isLoading = false;
+const createNewPost = () => {
+isLoading = true;
+fetch(POSTS_URL, {
+method: "POST"
+})
+.then((response) => response.json())
+.then((result) => {
+console.log("result", result);
+})
+.catch((error) => {
+console.log("error", error);
+})
+.finally(() => {
+isLoading = false;
+});
+};
+createNewPost();
+*/
+
+    // const POSTS_URL = "https://jsonplaceholder.typicode.com/posts";
+    const POSTS_URL = "https://jsonplaceholder.typicode.com/pjosts"; // catch test
     let isLoading = false;
 
     const createNewPost = () => {
       isLoading = true;
       fetch(POSTS_URL, {
-        method: "POST"
+        method: "POST",
       })
         .then((response) => response.json())
         .then((result) => {
@@ -35,35 +85,41 @@
     };
     createNewPost();
 
-
     const createNewPostAsync = async () => {
       try {
-        isLoading = true
+        isLoading = true;
         const fetchPost = await fetch(POSTS_URL, {
-          method: 'POST'
-        })
-        const post = await fetchPost.json()
+          method: "POST",
+        });
 
-        console.log('result', post)
-        return post
+        if (!fetchPost.ok) {
+          throw new Error("failed request");
+        }
 
+        const post = await fetchPost.json();
+
+        console.log("result", post);
+        return post;
       } catch (err) {
-        console.log('error', err)
+        console.log("error", err);
+      } finally {
+        isLoading = false;
       }
-      finally {
-        const isLoadingEl = document.querySelector('#loading')
-        isLoading = false
-      }
-    }
+    };
 
     createNewPostAsync()
       .then((post) => {
-        const isLoadingEl = document.querySelector('#loading')
-        isLoading ? isLoadingEl.style.display = 'block' : isLoadingEl.style.display = 'none'
-        const returnedTodoEl = document.querySelector('.returned-todo')
-        returnedTodoEl.textContent = `Post ${post.id} was posted`
-      })
+        const isLoadingEl = document.querySelector("#loading");
+        isLoading
+          ? (isLoadingEl.style.display = "block")
+          : (isLoadingEl.style.display = "none");
 
+        const returnedTodoEl = document.querySelector(".returned-todo");
+        returnedTodoEl.textContent = `Post ${post.id} was posted.`;
+      })
+      .catch(() => {
+        console.error("kosyak");
+      });
   </script>
 </body>
 

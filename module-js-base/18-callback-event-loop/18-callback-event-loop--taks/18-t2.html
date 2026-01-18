@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>JavaScript Sandbox</title>
+  <meta charset="UTF-8" />
+</head>
+
+<body>
+  <div id="app"></div>
+
+  <code>
+      <pre>
+        function runCode() {
+          console.log("before promise"); // 1 Синхрон
+          return new Promise((resolve) => {
+            setTimeout(() => {
+              console.log("Zero Promise"); //4 макротаск из callback queue от setTimout; 
+              // resolve внутри, потому microtask после здесь
+
+              resolve();
+            }, 0);
+          });
+        }
+        
+        setTimeout(() => {
+          console.log("Zero"); // 3 макротаск из callback queue
+        }, 0);
+        
+        runCode().then(() => console.log("Zero Promise Invoked")); // 5 Микротаск, 
+        // но в теле коллбека таймаута
+        
+        console.log("One"); // 2 синхрон
+    </pre
+      >
+    </code>
+
+  <ol class="exectuion-list">
+    <li class="" id="1">before promise</li>
+    <li class="" id="2">One</li>
+    <li class="" id="3">Zero</li>
+    <li class="" id="4">Zero Promise</li>
+    <li class="" id="5">Zero Promise Invoked</li>
+  </ol>
+
+  <script src="./index.mjs" type="module"></script>
+</body>
+
+</html>
+
+<!-- https://codesandbox.io/p/sandbox/18-result-aleksandr-callback-event-loop-task2-hgh5wy -->

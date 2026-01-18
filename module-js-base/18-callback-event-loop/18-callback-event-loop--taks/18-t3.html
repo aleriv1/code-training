@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>JavaScript Sandbox</title>
+  <meta charset="UTF-8" />
+</head>
+
+<body>
+  <div id="app"></div>
+
+  <code>
+      <pre>
+          const getData = (callback) => {
+            fetch("https://jsonplaceholder.typicode.com/users/1")
+              .then((response) => response.json())
+              .then((user) => {
+                console.log("Success"); // 2 микротаск если не rejected 
+                // из-за косяка сети (хорош бы проверить на ok на шаге выше)
+
+                callback(user);
+              })
+              .catch((error) => {
+                console.log(error); // (2) если косяк сети будет только End и error
+              });
+          };
+
+          getData(() => {
+            console.log("user received"); // 3 действтия из коллбека,
+            // когда до него доходит код в функции, синхронные в его рамках
+
+            const promise = new Promise((resolve) => {
+              setTimeout(() => {
+                resolve("promise resolved");
+              }, 500);
+              console.log("in promise"); // 4 в действтия в коробке,
+              // синхрон в рамках колбека
+
+              setTimeout(() => {
+                console.log("last set timeout"); // 5 макротас в callback queue,
+                // раньше чере таймаут выше, время решает
+              }, 400);
+            });
+
+            promise.then((result) => {
+              console.log(result); // 6 микротаск по переводу промиса в resolve состояние
+              // по соответствующей функции в таймауте в промисе
+            });
+          });
+
+          console.log("End"); // 1 синхрон, при том что в функии выше действтия асинхронные
+    </pre
+      >
+    </code>
+
+  <ol class="exectuion-list">
+    <li class="" id="1">End</li>
+    <li class="" id="2">Success или error</li>
+    <hr>
+    <li class="" id="3">user received</li>
+    <li class="" id="4">in promise</li>
+    <li class="" id="5">last set timeout</li>
+    <li class="" id="6">result</li>
+  </ol>
+
+  <script src="./index.mjs" type="module"></script>
+</body>
+
+</html>
+
+<!-- https://codesandbox.io/p/sandbox/distracted-almeida-ltjdpg -->

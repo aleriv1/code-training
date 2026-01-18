@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>17-asynchrony-async-await task 2</title>
+</head>
+
+<body>
+
+
+  <script>
+
+    /* 
+Требуется переписать данный код, использующий .then() и .catch(), в код, который использует исключительно async/await и try...catch:
+
+const TODOS_URL = 'https://jsonplaceholder.typicode.com/todos';
+const getTodosByIds = (ids) => {
+  const requests = ids.map((id) => fetch(`${TODOS_URL}/${id}`));
+  Promise.all(requests)
+    .then((responses) => {
+      const dataResults = responses.map((data) => data.json());
+      return Promise.all(dataResults)
+    })
+    .then((allTasks) => {
+      console.log(allTasks);
+    })
+    .catch((error) => {
+      console.log(error);
+    })
+}
+getTodosByIds([43, 21, 55, 100, 10]);
+ */
+
+    // const TODOS_URL = "https://jsonplaceholder.typicode.com/todos";
+    const TODOS_URL = "https://jsonjplaceholder.typicode.com/todos"; // catch test
+    const getTodosByIds = (ids) => {
+      const requests = ids.map((id) => fetch(`${TODOS_URL}/${id}`));
+      Promise.all(requests)
+        .then((responses) => {
+          const dataResults = responses.map((data) => data.json());
+          return Promise.all(dataResults);
+        })
+        .then((allTasks) => {
+          console.log(allTasks);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    };
+    getTodosByIds([43, 21, 55, 100, 10]);
+
+    const taskIds = [43, 21, 55, 100, 10];
+
+    const getTodosByIdsAsync = async (ids) => {
+      try {
+        const todosRequests = ids.map((id) => fetch(`${TODOS_URL}/${id}`));
+        const todosResponse = await Promise.all(todosRequests);
+        const todosResponseProcessed = todosResponse.map((todoRespons) =>
+          todoRespons.json()
+        );
+        const allTasks = await Promise.all(todosResponseProcessed);
+        console.log("allTasks", allTasks);
+        return allTasks;
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    getTodosByIdsAsync(taskIds)
+      .then((tasksArr) => {
+        const taskContainer = document.createElement("div");
+        taskContainer.classList.add("task-container");
+
+        const taskList = document.createElement("ul");
+        taskList.classList.add("task-list");
+        taskContainer.insertAdjacentElement("beforeend", taskList);
+
+        tasksArr.forEach((task) => {
+          const taskListEl = document.createElement("li");
+          taskListEl.classList.add("task-list__element");
+          taskListEl.textContent = `${task.title}`;
+          taskList.append(taskListEl);
+        });
+        document.querySelector("body").append(taskContainer);
+      })
+      .catch(() => {
+        console.error("kosyak");
+      });
+
+  </script>
+</body>
+
+</html>
+
+<!-- https://codesandbox.io/p/sandbox/q3z6f5 -->

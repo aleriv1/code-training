@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>JavaScript Sandbox</title>
+  <meta charset="UTF-8" />
+</head>
+
+<body>
+  <div id="app"></div>
+
+  <code>
+      <pre>
+      setTimeout(() => {
+        console.log("setTimeout"); // 4 macrotask из callback queue
+      }, 0);
+      const promise = new Promise((resolve) => {
+        console.log("Promise"); // 1 // Синхрон
+        resolve();
+      });
+      promise.then(() => {
+        console.log("Promise resolve"); // 3 microtask
+      });
+      console.log("End"); // 2 синхрон
+    </pre
+      >
+    </code>
+
+  <ol class="exectuion-list">
+    <li class="" id="1">Promise</li>
+    <li class="" id="2">End</li>
+    <li class="" id="3">Promise resolve</li>
+    <li class="" id="4">setTimeout</li>
+  </ol>
+
+  <script src="./index.mjs" type="module"></script>
+</body>
+
+</html>
+
+<!-- https://codesandbox.io/p/sandbox/6xl2lx -->
