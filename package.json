@@ -1,12 +1,36 @@
 {
-  "name": "Aleksandr",
+  "name": "aleksandr",
   "version": "1.0.0",
   "description": "html-css-basics",
   "main": "index.js",
-  "repository": "https://github.com/aleriv1/code-training",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aleriv1/code-training.git"
+  },
   "author": "Aleksandr <aleksandr_ermakov@outlook.com>",
   "license": "MIT",
   "dependencies": {
     "sass": "^1.97.2"
-  }
+  },
+  "devDependencies": {
+    "@babel/core": "^7.28.6",
+    "@babel/preset-env": "^7.28.6",
+    "@rollup/plugin-babel": "^6.1.0",
+    "@rollup/plugin-image": "^3.0.3",
+    "@rollup/plugin-node-resolve": "^16.0.3",
+    "rollup-plugin-livereload": "^2.0.5",
+    "rollup-plugin-serve": "^3.0.0",
+    "rollup-plugin-styles": "^4.0.0",
+    "rollup-plugin-server": "^0.7.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "rollup -w -c",
+    "prod": "rollup -c"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/aleriv1/code-training/issues"
+  },
+  "homepage": "https://github.com/aleriv1/code-training#readme"
 }
