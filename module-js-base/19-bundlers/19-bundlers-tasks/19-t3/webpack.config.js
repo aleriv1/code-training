@@ -1,3 +1,5 @@
+// npm i -D webpack webpack-cli
+
 import path from 'node:path'
 import { fileURLToPath } from 'node:url';
 
@@ -13,3 +15,5 @@ export default {
     clean: true
   }
 }
+
+// https://stackblitz.com/edit/webpack-webpack-js-org-vk23z5rt

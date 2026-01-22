@@ -70,3 +70,14 @@
 \- Если вы использовали абсолютные пути в импортах, замените на относительные.
 
 \- Vite, Webpack, Rollup должны запускаться из коробки, но иногда помогает удалить node_modules перед загрузкой.
+
+<!--
+
+https://webpack.js.org/plugins/html-webpack-plugin/#root
+https://webpack.js.org/guides/development/#using-webpack-dev-server
+https://webpack.js.org/loaders/babel-loader/#root
+https://webpack.js.org/guides/asset-management/#loading-images
+https://webpack.js.org/guides/asset-management/#loading-css
+https://webpack.js.org/guides/installation/
+
+ -->

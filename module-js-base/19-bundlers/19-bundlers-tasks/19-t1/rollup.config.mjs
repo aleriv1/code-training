@@ -1,3 +1,5 @@
+// npm i rollup -D
+
 export default {
   input: './src/index.js',
   output: {
@@ -5,3 +7,5 @@ export default {
     format: 'iife'
   }
 }
+
+// https://stackblitz.com/edit/stackblitz-starters-fz7eegca

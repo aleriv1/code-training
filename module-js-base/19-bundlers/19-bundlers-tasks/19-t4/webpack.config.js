@@ -1,3 +1,5 @@
+// #region what was added
+
 // npm i -D webpack webpack-cli
 // npm install --save-dev style-loader css-loader
 // {
@@ -46,6 +48,8 @@
       type: 'asset/resource',
     },
  */
+
+// #endregion what was added
 
 import path from 'node:path'
 import { fileURLToPath } from 'node:url';
@@ -99,3 +103,5 @@ export default {
     ],
   },
 }
+
+// https://stackblitz.com/edit/webpack-webpack-js-org-mlglbkgg
