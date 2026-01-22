@@ -1,0 +1,26 @@
+body {
+  display: flex;
+  align-items: center;
+
+  flex-direction: column;
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+}
+
+
+h1 {
+  align-self: start;
+
+  span {
+    display: block;
+  }
+}
+
+img {
+  /* border: 2px solid green; */
+  box-shadow: 0 0 3px 5px green;
+
+  align-self: start;
+
+  flex: 0 0 auto;
+}
