@@ -7,7 +7,7 @@ export default class App {
 
   constructor() {
     this.#JSblock = new JSblock()
-    this.#timerBlock = new TimerBlock(new Date()) // date for example
+    this.#timerBlock = new TimerBlock(new Date())
   }
 
   run() { // this method we should import in index js

@@ -2,7 +2,7 @@ export class TimerBlock {
   #date
   #timerContainer
   #timerTextHTML
-  constructor(date) { // our date js creating
+  constructor(date) {
     this.#date = date
     this.#timerContainer = document.createElement('div')
     this.#timerTextHTML = document.createElement('h2')
@@ -15,11 +15,9 @@ export class TimerBlock {
 
     const todayDateHTML = document.createElement('div')
     todayDateHTML.className = 'today-date'
-    todayDateHTML.textContent = new Date() // textContent automatically converts all entities to string
+    todayDateHTML.textContent = new Date()
 
-    // to timerContainer we should add needed entities
     this.#timerContainer.append(this.#timerTextHTML, todayDateHTML)
-    // now we need to return our container
 
     return this.#timerContainer
   }
