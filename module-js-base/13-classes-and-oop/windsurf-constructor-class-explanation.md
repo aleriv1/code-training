@@ -21,53 +21,6 @@ function AnimalFunc(name) {
 
 This code snippet defines a constructor function called `AnimalFunc` that takes a `name` parameter. Inside the function, it assigns the `name` parameter to the `name` property of the newly created object. It also defines a method called `getName` as a property of the object, which returns the value of the `name` property. This code is an example of object-oriented programming (OOP) in JavaScript, where an object is created with properties and methods.
 
-
-_Context Items Read (42):_
-
-- classes-and-oop.js `(21-35)`
-- classes-and-oop.js `AnimalFunc`
-- classes-and-oop.js `getName`
-- this-keyword.js `getName`
-- bind-call-apply.js ``
-- prototype.js `(0-18)`
-- bind-call-apply.js `// #region bind, cal...`
-- spread-rest.js `(77-104)`
-- closure.js ``
-- bind-call-apply.js `};`
-- bind-call-apply.js ``
-- objects-several-in-one.js `(0-35)`
-- classes-and-oop.js `Animal`
-- function-expression.js ``
-- bind-call-apply.js ``
-- index2.js `(0-17)`
-- classes-and-oop.js `getName`
-- function-expression.js ``
-- objects.js `(0-80)`
-- js-function-tasks.js `console.log(getName1...`
-- prototype.js `(27-46)`
-- objects-key-working.js `(0-47)`
-- 12-this-keyword-tasks.js `(152-156)`
-- function-declaration.js ``
-- js-function-task-clear.js `console.log(getName3...`
-- 12-this-keyword-tasks.js `(160-161)`
-- destructuring.js `(79-93)`
-- this-keyword.js `(25-32)`
-- destructuring.js `// #region rest with...`
-- js-function-tasks.js `// #region js-functi...`
-- array-methods-map-filter-find-findINdex-some-every-reduce.js `// const someElement...`
-- js-function-task-clear.js `console.log(getName1...`
-- js-function-tasks.js `console.log(getName3...`
-- loss-of-the-context.js `(44-54)`
-- js-function-tasks.js `console.log(getName2...`
-- bind-call-apply.js `owner: {`
-- index.js `(0-38)`
-- js-functions.html `<!DOCTYPE html>`
-- index3.js `(0-28)`
-- js-function-tasks.js ``
-- 9-arrays-tasks.js ``
-- js-function-task-clear.js `console.log(getName2...`
-
-
 ---
 
 **User** _at 11:28 am, Jan 2, 2026_
@@ -99,7 +52,7 @@ so is the class the next level of this approach?
 
 **Windsurf** _at 11:31 am, Jan 2, 2026_
 
-Yes, in modern JavaScript, the class syntax is built on top of the function constructor pattern. The class syntax provides a more concise and readable way to define objects and their behavior. 
+Yes, in modern JavaScript, the class syntax is built on top of the function constructor pattern. The class syntax provides a more concise and readable way to define objects and their behavior.
 
 Here's an equivalent version of the code snippet using the class syntax:
 
@@ -115,18 +68,17 @@ class AnimalClass {
 }
 ```
 
-In this version, the `AnimalClass` is defined using the `class` keyword. The constructor function is defined using the `constructor` method, and the `getName` method is defined using a regular method definition. 
+In this version, the `AnimalClass` is defined using the `class` keyword. The constructor function is defined using the `constructor` method, and the `getName` method is defined using a regular method definition.
 
 When an instance of the `AnimalClass` is created using the `new` keyword, the constructor function is called with the provided arguments, and the object is created with the `name` property. The `getName` method can be called on the object to retrieve the value of the `name` property.
 
 Overall, the class syntax provides a more modern and intuitive way to define objects and their behavior in JavaScript.
 
-
 ---
 
 **User** _at 11:45 am, Jan 2, 2026_
 
-Is class a function, just in ohter syntax? 
+Is class a function, just in ohter syntax?
 
 The "constructor" part only for properties, I mean not methods?
 
