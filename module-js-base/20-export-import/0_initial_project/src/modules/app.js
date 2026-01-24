@@ -1,5 +1,6 @@
 import { JSblock } from "./js-block"
 import { TimerBlock } from "./timer-block"
+import { JS_CREATION_DATE } from "../core/constants/settings"
 
 export default class App {
   #JSblock
@@ -7,7 +8,7 @@ export default class App {
 
   constructor() {
     this.#JSblock = new JSblock()
-    this.#timerBlock = new TimerBlock(new Date(2020, 0, 0))
+    this.#timerBlock = new TimerBlock(JS_CREATION_DATE)
   }
 
   run() { // this method we should import in index js

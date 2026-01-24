@@ -20,6 +20,12 @@ export class TimerBlock {
     return DateUtils.getPreciseDifDifference(new Date(), this.#date)
 
   }
+  // to update time every seconds
+  #enableDataUpdate() {
+    setInterval(() => {
+      this.#timerTextHTML.textContent = this.#getTimerContent()
+    }, 1000);
+  }
 
   render() {
     this.#timerContainer.id = 'timer'
@@ -33,6 +39,7 @@ export class TimerBlock {
     todayDateHTML.textContent = `(Сегодня ${todayDateFormat})`
 
     this.#timerContainer.append(this.#timerTextHTML, todayDateHTML)
+    this.#enableDataUpdate()
 
     return this.#timerContainer
   }
