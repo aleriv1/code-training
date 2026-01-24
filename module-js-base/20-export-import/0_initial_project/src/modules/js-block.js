@@ -24,6 +24,8 @@ export class JSblock {
 
     this.#container.append(mainTtitle, JSImageHTML, foundedText)
 
+    // console.log('AlenaErmakova')
+
     return this.#container
   }
 }

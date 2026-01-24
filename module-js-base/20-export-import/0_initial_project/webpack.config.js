@@ -6,6 +6,7 @@ module.exports = ({ development }) => ({
     entry: `${__dirname}/index.js`,
     devServer: {
         contentBase: `${__dirname}/dist`,
+        // contentBase: `${__dirname}/`,
         open: true,
         compress: true,
         port: 4000,
