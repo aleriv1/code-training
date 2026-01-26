@@ -12,6 +12,24 @@
                     "char": 32
                 }
             }
+        },
+        "$ROOTPATH$\\module-js-base\\20-export-import\\0_initial_project\\src\\modules\\js-block.js": {
+            "key": "$ROOTPATH$\\module-js-base\\20-export-import\\0_initial_project\\src\\modules\\js-block.js",
+            "bookmarks": {
+                "3": {
+                    "line": 3,
+                    "char": 0
+                }
+            }
+        },
+        "$ROOTPATH$\\module-js-base\\20-export-import\\es6-import-export-txt\\es6-import-export.html": {
+            "key": "$ROOTPATH$\\module-js-base\\20-export-import\\es6-import-export-txt\\es6-import-export.html",
+            "bookmarks": {
+                "10": {
+                    "line": 10,
+                    "char": 6
+                }
+            }
         }
     },
     "history": {
@@ -23,8 +41,16 @@
             {
                 "documentKey": "$ROOTPATH$\\module-js-base\\17-asynchrony-async-await\\17-async-await.js",
                 "bookmarkKey": "40"
+            },
+            {
+                "documentKey": "$ROOTPATH$\\module-js-base\\20-export-import\\0_initial_project\\src\\modules\\js-block.js",
+                "bookmarkKey": "3"
+            },
+            {
+                "documentKey": "$ROOTPATH$\\module-js-base\\20-export-import\\es6-import-export-txt\\es6-import-export.html",
+                "bookmarkKey": "10"
             }
         ],
-        "index": 1
+        "index": 3
     }
 }

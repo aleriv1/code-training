@@ -2,7 +2,6 @@ import JS_IMAGE from '../../assets/js.png'
 
 export class JSblock {
 
-
   #container
   constructor() {
     this.#container = document.createElement('div')
